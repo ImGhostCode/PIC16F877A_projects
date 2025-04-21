@@ -1,0 +1,7 @@
+#include <16f877A.h>
+#fuses hs, nowdt, put, noprotect, nolvp
+#use delay(clock=6MHz)
+
+void main() {
+
+}

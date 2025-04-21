@@ -1,0 +1,63 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     i
+021     d
+022     main.@SCRATCH1
+023     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000019  @cinit1
+000019  main
+000023  @cinit2
+
+Project Directory:
+    D:\Embedded\Projects\PIC16F877A\8 led sang tat dan pst\
+
+Project Files:
+    8_led_sang_tat_dan_pst.c                                [28-Feb-25 19:29  CRC=F817D64F]
+    C:\Program Files (x86)\PICC\Devices\16f877A.h           [07-Mar-23 19:19  CRC=32478F9C]
+
+Source signature=5CA6F587
+Program memory checksum=0000
+Hex file CRC=A6BE
+
+Units:
+    D:\Embedded\Projects\PIC16F877A\8 led sang tat dan pst\8_led_sang_tat_dan_pst (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   8_led_sang_tat_dan_pst.xsym
+    Errors:      8_led_sang_tat_dan_pst.err
+    Ext Symbols: 8_led_sang_tat_dan_pst.esym
+    INHX8:       8_led_sang_tat_dan_pst.hex
+    Symbols:     8_led_sang_tat_dan_pst.sym
+    List:        8_led_sang_tat_dan_pst.lst
+    Debug/COFF:  8_led_sang_tat_dan_pst.cof
+    Project:     8_led_sang_tat_dan_pst.ccspjt
+    Call Tree:   8_led_sang_tat_dan_pst.tre
+    Statistics:  8_led_sang_tat_dan_pst.STA

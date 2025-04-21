@@ -1,0 +1,40 @@
+[PROJECT]
+Target=8_led_sang_tat_dan_pst.hex
+Processor_Text=PIC16F877A
+CCSVersion=5.115
+Compiler=PCM
+[Target Data]
+FileList=8_led_sang_tat_dan_pst.c
+[8_led_sang_tat_dan_pst.c]
+Type=4
+[mru-list]
+1=8_led_sang_tat_dan_pst.c
+
+[defines]
+buildcount=3
+
+[Opened Files]
+1=8_led_sang_tat_dan_pst.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=8_led_sang_tat_dan_pst (main)
+
+[ProjectLog]
+Days=2
+D1=28-02-2025
+D1_L=2
+D1_L1=[70453]Stopped Editing.
+TotalEdit=9
+TotalDebug=0
+D1_E=9
+D1_D=0
+D1_L2=[70453]Project Closed.
+D2=03-03-2025
+D2_L=2
+D2_L1=[69378]Project Opened.
+D2_L2=[69438]Project Closed.
+
+[fileformats]
+forcecoff=0

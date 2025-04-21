@@ -1,0 +1,151 @@
+CCS PCM C Compiler, Version 5.115, 43599               28-Feb-25 19:29
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\8 led sang tat dan pst\8_led_sang_tat_dan_pst.lst
+
+               ROM used:   98 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   8 (2%) at main() level
+                           9 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   019
+0003:  NOP
+.................... #include <16f877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+0004:  MOVLW  23
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  F1
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  NOP
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+.................... 
+.................... unsigned int8 i,d;
+.................... 
+.................... void main() {
+0019:  MOVF   03,W
+001A:  ANDLW  1F
+001B:  MOVWF  03
+001C:  BSF    03.5
+001D:  BSF    1F.0
+001E:  BSF    1F.1
+001F:  BSF    1F.2
+0020:  BCF    1F.3
+0021:  MOVLW  07
+0022:  MOVWF  1C
+0023:  BCF    03.7
+....................    set_tris_d(0x00);
+0024:  MOVLW  00
+0025:  MOVWF  08
+....................    d=0x00;
+0026:  BCF    03.5
+0027:  CLRF   21
+....................    output_d(d);
+0028:  BSF    03.5
+0029:  CLRF   08
+002A:  BCF    03.5
+002B:  MOVF   21,W
+002C:  MOVWF  08
+....................    delay_ms(500);
+002D:  MOVLW  02
+002E:  MOVWF  22
+002F:  MOVLW  FA
+0030:  MOVWF  23
+0031:  CALL   004
+0032:  DECFSZ 22,F
+0033:  GOTO   02F
+....................    while(true) {
+....................       for(i = 0; i < 8; i++) {
+0034:  CLRF   20
+0035:  MOVF   20,W
+0036:  SUBLW  07
+0037:  BTFSS  03.0
+0038:  GOTO   04B
+....................          d = (d<<1) + 0x01;
+0039:  BCF    03.0
+003A:  RLF    21,W
+003B:  ADDLW  01
+003C:  MOVWF  21
+....................          output_d(d);
+003D:  BSF    03.5
+003E:  CLRF   08
+003F:  BCF    03.5
+0040:  MOVF   21,W
+0041:  MOVWF  08
+....................          delay_ms(500);
+0042:  MOVLW  02
+0043:  MOVWF  22
+0044:  MOVLW  FA
+0045:  MOVWF  23
+0046:  CALL   004
+0047:  DECFSZ 22,F
+0048:  GOTO   044
+0049:  INCF   20,F
+004A:  GOTO   035
+....................       }
+....................       for(i = 0; i < 8; i++) {
+004B:  CLRF   20
+004C:  MOVF   20,W
+004D:  SUBLW  07
+004E:  BTFSS  03.0
+004F:  GOTO   060
+....................          d = d<<1;
+0050:  BCF    03.0
+0051:  RLF    21,F
+....................          output_d(d);
+0052:  BSF    03.5
+0053:  CLRF   08
+0054:  BCF    03.5
+0055:  MOVF   21,W
+0056:  MOVWF  08
+....................          delay_ms(500);
+0057:  MOVLW  02
+0058:  MOVWF  22
+0059:  MOVLW  FA
+005A:  MOVWF  23
+005B:  CALL   004
+005C:  DECFSZ 22,F
+005D:  GOTO   059
+005E:  INCF   20,F
+005F:  GOTO   04C
+....................       }
+0060:  GOTO   034
+....................    }
+.................... }
+0061:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
