@@ -1,0 +1,109 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\PWM Adjust led brightness\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=7
+D1=19-12-2024
+D1_L=4
+D1_L1=[67606]Project Opened.
+D1_L2=[67617]Started Editing.
+D1_L3=[67963]Stopped Editing.
+TotalEdit=48
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L4=[67963]Project Closed.
+D2=20-12-2024
+D2_L=4
+D2_L1=[68771]Project Opened.
+D2_L2=[68780]Started Editing.
+D2_L3=[69110]Stopped Editing.
+D2_E=6
+D2_D=0
+D2_L4=[69110]Project Closed.
+D3=21-12-2024
+D3_L=20
+D3_L1=[67508]Project Opened.
+D3_L2=[67516]Started Editing.
+D3_L3=[67793]Stopped Editing.
+D3_E=7
+D3_D=0
+D3_L4=[67793]Project Closed.
+D3_L5=[67803]Project Opened.
+D3_L6=[67842]Started Editing.
+D3_L7=[67851]Stopped Editing.
+D3_L8=[67851]Project Closed.
+D3_L9=[67878]Project Opened.
+D3_L10=[68053]Project Closed.
+D3_L11=[68053]Project Opened.
+D3_L12=[68081]Started Editing.
+D3_L13=[68095]Stopped Editing.
+D3_L14=[68095]Project Closed.
+D3_L15=[68401]Project Opened.
+D3_L16=[68427]Project Closed.
+D3_L17=[69001]Project Opened.
+D3_L18=[69029]Project Closed.
+D3_L19=[69226]Project Opened.
+D3_L20=[69283]Project Closed.
+D4=22-12-2024
+D4_L=4
+D4_L1=[36008]Project Opened.
+D4_L2=[36025]Started Editing.
+D4_L3=[36254]Stopped Editing.
+D4_E=4
+D4_D=0
+D4_L4=[36254]Project Closed.
+D5=26-12-2024
+D5_L=4
+D5_L1=[65700]Project Opened.
+D5_L2=[65740]Started Editing.
+D5_L3=[66417]Stopped Editing.
+D5_E=12
+D5_D=0
+D5_L4=[66417]Project Closed.
+D6=30-03-2025
+D6_L=4
+D6_L1=[66340]Project Opened.
+D6_L2=[66358]Started Editing.
+D6_L3=[67118]Stopped Editing.
+D6_E=13
+D6_D=0
+D6_L4=[67118]Project Closed.
+D7=31-03-2025
+D7_L=4
+D7_L1=[39996]Project Opened.
+D7_L2=[40022]Project Closed.
+D7_L3=[43190]Project Opened.
+D7_L4=[43224]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=49
+Count=2
+2=main.h
+t2=49
+3=main.h
+t3=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=14
+[Units]
+Count=1
+1=main (main)

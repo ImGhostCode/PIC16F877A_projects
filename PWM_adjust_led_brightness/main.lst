@@ -1,0 +1,118 @@
+CCS PCM C Compiler, Version 5.115, 43599               26-Mar-25 10:07
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\PWM Adjust led brightness\main.lst
+
+               ROM used:   62 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   8 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=20000000)
+.................... 
+.................... 
+.................... unsigned int16 bien_toc_do;
+.................... 
+.................... void main()
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  MOVLW  FF
+0008:  MOVWF  22
+0009:  BSF    03.5
+000A:  BSF    1F.0
+000B:  BSF    1F.1
+000C:  BSF    1F.2
+000D:  BCF    1F.3
+000E:  MOVLW  07
+000F:  MOVWF  1C
+0010:  BCF    03.7
+.................... {
+....................    set_tris_c(0x00);
+0011:  MOVLW  00
+0012:  MOVWF  07
+0013:  BCF    03.5
+0014:  MOVWF  22
+....................    setup_ccp1(CCP_PWM);
+0015:  BCF    22.2
+0016:  MOVF   22,W
+0017:  BSF    03.5
+0018:  MOVWF  07
+0019:  BCF    03.5
+001A:  BCF    07.2
+001B:  MOVLW  0C
+001C:  MOVWF  17
+....................    setup_timer_2(T2_DIV_BY_16, 249, 1);
+001D:  MOVLW  00
+001E:  MOVWF  78
+001F:  IORLW  06
+0020:  MOVWF  12
+0021:  MOVLW  F9
+0022:  BSF    03.5
+0023:  MOVWF  12
+....................    bien_toc_do = 800; // 80%
+0024:  MOVLW  03
+0025:  BCF    03.5
+0026:  MOVWF  21
+0027:  MOVLW  20
+0028:  MOVWF  20
+....................    set_pwm1_duty(bien_toc_do);
+0029:  MOVF   21,W
+002A:  MOVWF  79
+002B:  MOVF   20,W
+002C:  MOVWF  78
+002D:  RRF    79,F
+002E:  RRF    78,F
+002F:  RRF    79,F
+0030:  RRF    78,F
+0031:  RRF    79,F
+0032:  MOVF   78,W
+0033:  MOVWF  15
+0034:  RRF    79,F
+0035:  RRF    79,W
+0036:  ANDLW  30
+0037:  MOVWF  77
+0038:  MOVF   17,W
+0039:  ANDLW  CF
+003A:  IORWF  77,W
+003B:  MOVWF  17
+....................    while(TRUE);
+003C:  GOTO   03C
+.................... }
+.................... // Tpwm = 0.8ms
+003D:  SLEEP
+.................... // T = 1/20Mhz = 0.05us = 50ns
+.................... // PERIOD_PWM = [PR2+1] * 4 * Tocs * PVtmr2 = 0.8ms = 800.000ns
+.................... // 0 <= PR2 <= 255, PVtmr2 = 1,4,16
+.................... // [PR2+1] = PERIOD_PWM / (4*Tosc*PVtmr2) = 800.000 / (4*50ns*16) = 250
+.................... // PR2 = 249
+.................... // DUTY_CYCLE_max = PERIOD_pwm
+.................... //  Duty Cycle =(CCPR1L:CCP1CON<5:4>) * Tosc • PVtmr2
+.................... // (CCPR1L:CCP1CON<5:4>) = DUTY_CYCLEmax / Tosc • PVtmr2 = 800.000ns /50ns*16 = 1000
+.................... // 1000 * 10% = 100
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

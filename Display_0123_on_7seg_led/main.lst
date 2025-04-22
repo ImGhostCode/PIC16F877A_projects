@@ -1,0 +1,164 @@
+CCS PCM C Compiler, Version 5.115, 43599               13-Mar-25 11:16
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\hien thi  4 led quet tu 0 den 3\main.lst
+
+               ROM used:   98 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   047
+0003:  NOP
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  BCF    0A.0
+0005:  BCF    0A.1
+0006:  BCF    0A.2
+0007:  ADDWF  02,F
+0008:  RETLW  3F
+0009:  RETLW  06
+000A:  RETLW  5B
+000B:  RETLW  4F
+000C:  RETLW  00
+000D:  RETLW  00
+000E:  RETLW  00
+000F:  RETLW  00
+0010:  RETLW  00
+0011:  RETLW  00
+0012:  BCF    0A.0
+0013:  BCF    0A.1
+0014:  BCF    0A.2
+0015:  ADDWF  02,F
+0016:  RETLW  01
+0017:  RETLW  02
+0018:  RETLW  04
+0019:  RETLW  08
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=6000000)
+.................... 
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+*
+0030:  MOVLW  23
+0031:  MOVWF  04
+0032:  BCF    03.7
+0033:  MOVF   00,W
+0034:  BTFSC  03.2
+0035:  GOTO   044
+0036:  MOVLW  01
+0037:  MOVWF  78
+0038:  CLRF   77
+0039:  DECFSZ 77,F
+003A:  GOTO   039
+003B:  DECFSZ 78,F
+003C:  GOTO   038
+003D:  MOVLW  F1
+003E:  MOVWF  77
+003F:  DECFSZ 77,F
+0040:  GOTO   03F
+0041:  NOP
+0042:  DECFSZ 00,F
+0043:  GOTO   036
+.................... 
+.................... const unsigned char ma7doan[10] = {0x3f, 0x06, 0x5b, 0x4f}; // Ch? c?n 0,1,2,3
+.................... const unsigned char maquet[4] = {0x01, 0x02, 0x04, 0x08};
+.................... 
+.................... void hienthi_1_led(int8 j) 
+.................... {
+....................    output_b (0x00); // T?t c?t quét tru?c khi thay d?i d? li?u
+*
+001A:  BSF    03.5
+001B:  CLRF   06
+001C:  BCF    03.5
+001D:  CLRF   06
+....................    output_d (ma7doan[j]); // G?i mã s? tuong ?ng
+001E:  MOVF   22,W
+001F:  CALL   004
+0020:  MOVWF  23
+0021:  BSF    03.5
+0022:  CLRF   08
+0023:  BCF    03.5
+0024:  MOVF   23,W
+0025:  MOVWF  08
+....................    output_b (maquet[j]); // Kích ho?t c?t quét
+0026:  MOVF   22,W
+0027:  CALL   012
+0028:  MOVWF  23
+0029:  BSF    03.5
+002A:  CLRF   06
+002B:  BCF    03.5
+002C:  MOVF   23,W
+002D:  MOVWF  06
+....................    delay_ms (5); // Tang th?i gian hi?n th? d? m?t nh?n bi?t du?c
+002E:  MOVLW  05
+002F:  MOVWF  23
+*
+0044:  BCF    0A.3
+0045:  BCF    0A.4
+0046:  GOTO   05E (RETURN)
+.................... }
+.................... 
+.................... void main()
+0047:  MOVF   03,W
+0048:  ANDLW  1F
+0049:  MOVWF  03
+004A:  BSF    03.5
+004B:  BSF    1F.0
+004C:  BSF    1F.1
+004D:  BSF    1F.2
+004E:  BCF    1F.3
+004F:  MOVLW  07
+0050:  MOVWF  1C
+0051:  BCF    03.7
+.................... {
+....................    set_tris_b (0x00); // C?ng B là output (quét c?t)
+0052:  MOVLW  00
+0053:  MOVWF  06
+....................    set_tris_d (0x00); // C?ng D là output (d? li?u LED)
+0054:  MOVWF  08
+.................... 
+....................    while (TRUE)
+....................    {
+....................       for (int8 j = 0; j < 4; j++) // Ch?y t? 0 -> 3
+0055:  BCF    03.5
+0056:  CLRF   21
+0057:  MOVF   21,W
+0058:  SUBLW  03
+0059:  BTFSS  03.0
+005A:  GOTO   060
+....................       {
+....................          hienthi_1_led(j);
+005B:  MOVF   21,W
+005C:  MOVWF  22
+005D:  GOTO   01A
+005E:  INCF   21,F
+005F:  GOTO   057
+....................       }
+0060:  GOTO   056
+....................    }
+.................... }
+.................... 
+0061:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

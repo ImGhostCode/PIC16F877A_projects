@@ -1,0 +1,82 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020-021 gh
+022-02B ma7doan
+02C     ma_tr
+02D     ma_ch
+02E     ma_dv
+02F.0   up_last
+02F.1   down_last
+030-031 counter_up
+032-033 counter_down
+034     @delay_ms2.P1
+034-035 giaima_3so_xvn.x
+036     giaima_3so_xvn.@SCRATCH1
+037     giaima_3so_xvn.@SCRATCH2
+038-039 @DIVS1616.P1
+03A-03B @DIVS1616.P1
+03C     @DIVS1616.@SCRATCH1
+03D     @DIVS1616.@SCRATCH2
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms2
+000019  phim_up
+00003E  phim_down
+000065  @DIVS1616
+0000A3  giaima_3so_xvn
+000100  hienthi_3so_quet
+000133  MAIN
+000133  @cinit1
+000145  @cinit2
+
+Project Directory:
+    D:\Embedded\Projects\PIC16F877A\Increase and decrease variable by press and hold\
+
+Project Files:
+    main.c                                                  [13-Mar-25 17:39  CRC=9822EF20]
+    main.h                                                  [13-Mar-25 11:40  CRC=00000000]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [07-Mar-23 19:19  CRC=32478F9C]
+
+Source signature=FCB20E58
+Program memory checksum=0000
+Hex file CRC=DBC7
+
+Units:
+    D:\Embedded\Projects\PIC16F877A\Increase and decrease variable by press and hold\main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

@@ -1,0 +1,152 @@
+CCS PCM C Compiler, Version 5.115, 43599               20-Mar-25 11:07
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Timer1 chop tat led 699ms interupt\main.lst
+
+               ROM used:   91 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   13 (4%) at main() level
+                           13 (4%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   03B
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  MOVLW  8C
+0018:  MOVWF  04
+0019:  BTFSS  00.0
+001A:  GOTO   01D
+001B:  BTFSC  0C.0
+001C:  GOTO   02E
+001D:  MOVF   22,W
+001E:  MOVWF  04
+001F:  MOVF   23,W
+0020:  MOVWF  77
+0021:  MOVF   24,W
+0022:  MOVWF  78
+0023:  MOVF   25,W
+0024:  MOVWF  79
+0025:  MOVF   26,W
+0026:  MOVWF  7A
+0027:  MOVF   20,W
+0028:  MOVWF  0A
+0029:  SWAPF  21,W
+002A:  MOVWF  03
+002B:  SWAPF  7F,F
+002C:  SWAPF  7F,W
+002D:  RETFIE
+002E:  BCF    0A.3
+002F:  BCF    0A.4
+0030:  GOTO   031
+.................... 
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #fuses hs, nowdt,put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+.................... 
+.................... 
+.................... #bit tmr1if = 0x0c.0
+.................... 
+.................... unsigned int d;
+.................... 
+.................... #int_timer1
+.................... void interupt_timer1() 
+.................... {
+....................    d = ~d;
+0031:  COMF   27,F
+....................    output_d (d);
+0032:  BSF    03.5
+0033:  CLRF   08
+0034:  BCF    03.5
+0035:  MOVF   27,W
+0036:  MOVWF  08
+0037:  BCF    0C.0
+0038:  BCF    0A.3
+0039:  BCF    0A.4
+003A:  GOTO   01D
+.................... }
+.................... 
+.................... void main()
+003B:  MOVF   03,W
+003C:  ANDLW  1F
+003D:  MOVWF  03
+003E:  BSF    03.5
+003F:  BSF    1F.0
+0040:  BSF    1F.1
+0041:  BSF    1F.2
+0042:  BCF    1F.3
+0043:  MOVLW  07
+0044:  MOVWF  1C
+0045:  BCF    03.7
+.................... {
+....................    set_tris_d (0x00);
+0046:  MOVLW  00
+0047:  MOVWF  08
+....................    d = 0x00;
+0048:  BCF    03.5
+0049:  CLRF   27
+....................    output_d (d);
+004A:  BSF    03.5
+004B:  CLRF   08
+004C:  BCF    03.5
+004D:  MOVF   27,W
+004E:  MOVWF  08
+....................    setup_timer_1 (T1_INTERNAL|T1_DIV_BY_8);
+004F:  MOVLW  B5
+0050:  MOVWF  10
+....................    set_timer1 (0);
+0051:  CLRF   0E
+0052:  CLRF   0F
+0053:  CLRF   0E
+0054:  NOP
+....................    enable_interrupts(GLOBAL);
+0055:  MOVLW  C0
+0056:  IORWF  0B,F
+....................    enable_interrupts(INT_TIMER1);
+0057:  BSF    03.5
+0058:  BSF    0C.0
+....................    while (TRUE);
+0059:  GOTO   059
+.................... }
+.................... 
+005A:  SLEEP
+.................... // 6MHz => 1/4 => 1.5MHz => 1/8 => 187.5kHz => 5.33us * 65,536 => 349,5ms => T= 699ms
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,0 +1,206 @@
+CCS PCM C Compiler, Version 5.115, 43599               24-Mar-25 11:21
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Interrupt port b\main.lst
+
+               ROM used:   95 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   19 (5%) at main() level
+                           19 (5%) worst case
+               Stack used: 2 locations (1 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   039
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.3
+0018:  GOTO   01B
+0019:  BTFSC  0B.0
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   02F
+.................... 
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=6000000)
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... 
+.................... 
+.................... unsigned int ma_ch, ma_dv, i, mp;
+.................... unsigned int8 gh;
+.................... const unsigned char ma7doan[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F}; 
+.................... 
+.................... unsigned int8 d;
+.................... #INT_RB
+.................... void rb_isr() 
+.................... {
+.................... //!   delay_ms (20); // Ch?ng d?i phím
+.................... //!   if (!input (PIN_B0)) mp = 0;
+.................... //!   else if (!input (PIN_B1)) mp = 1;
+.................... //!   while (!input (PIN_B0) || ! input (PIN_B1)); // Ch? th? nút
+.................... d = ~d;
+002F:  COMF   2C,F
+.................... output_d(d);
+0030:  BSF    03.5
+0031:  CLRF   08
+0032:  BCF    03.5
+0033:  MOVF   2C,W
+0034:  MOVWF  08
+0035:  BCF    0B.0
+0036:  BCF    0A.3
+0037:  BCF    0A.4
+0038:  GOTO   01B
+.................... }
+.................... 
+.................... void giaima_2so_xvn(unsigned int8 x) 
+.................... {
+....................    ma_dv = ma7doan[x % 10];
+....................    ma_ch = ma7doan[x / 10];
+.................... 
+....................    if (x < 10)
+....................    {
+....................       ma_ch = 0x00;
+....................    }
+.................... }
+.................... 
+.................... void hienthi_2so_quet() 
+.................... {
+....................    output_d (ma_dv) ;
+....................    output_high (PIN_C0) ;
+....................    delay_ms (2) ;
+....................    output_low (PIN_C0) ;
+....................    output_d (ma_ch) ;
+....................    output_high (PIN_C1) ;
+....................    delay_ms (2) ;
+....................    output_low (PIN_C1) ;
+.................... }
+.................... 
+.................... void main()
+0039:  MOVF   03,W
+003A:  ANDLW  1F
+003B:  MOVWF  03
+003C:  MOVLW  FF
+003D:  MOVWF  2D
+003E:  BSF    03.5
+003F:  BSF    1F.0
+0040:  BSF    1F.1
+0041:  BSF    1F.2
+0042:  BCF    1F.3
+0043:  MOVLW  07
+0044:  MOVWF  1C
+0045:  BCF    03.7
+.................... {
+.................... d = 0x00;
+0046:  BCF    03.5
+0047:  CLRF   2C
+....................    set_tris_b (0x03);
+0048:  MOVLW  03
+0049:  BSF    03.5
+004A:  MOVWF  06
+....................    set_tris_d (0x00);
+004B:  MOVLW  00
+004C:  MOVWF  08
+....................    set_tris_c (0x00);
+004D:  MOVWF  07
+004E:  BCF    03.5
+004F:  MOVWF  2D
+....................    output_d (0x00) ;
+0050:  BSF    03.5
+0051:  CLRF   08
+0052:  BCF    03.5
+0053:  CLRF   08
+.................... clear_interrupt(INT_RB);        // Clear PORTB IOC flag bit
+0054:  MOVF   06,W
+0055:  NOP
+0056:  BCF    0B.0
+.................... enable_interrupts(INT_RB);      // Enable PORTB IOC
+0057:  BSF    0B.3
+.................... enable_interrupts(GLOBAL);      // Enable global interrupts
+0058:  MOVLW  C0
+0059:  IORWF  0B,F
+....................    gh = 0; mp = 0xff;
+005A:  CLRF   2B
+005B:  MOVLW  FF
+005C:  MOVWF  2A
+....................    while (TRUE);
+005D:  GOTO   05D
+.................... //!   {
+.................... //!      giaima_2so_xvn (gh) ;
+.................... //!      hienthi_2so_quet () ;
+.................... //!
+.................... //!      if (mp != 0xff)
+.................... //!      {
+.................... //!         disable_interrupts (GLOBAL) ;
+.................... //!         if (mp == 0) gh--;
+.................... //!         else if (mp == 1) gh++;
+.................... //!         if (gh > 99) gh = 0;
+.................... //!         else if (gh < 0) gh = 99;
+.................... //!         giaima_2so_xvn (gh) ;
+.................... //!         for (i = 0; i < 50; i++)
+.................... //!         {
+.................... //!            hienthi_2so_quet () ;
+.................... //!         }
+.................... //!
+.................... //!         mp = 0xff;
+.................... //!         enable_interrupts (GLOBAL) ;
+.................... //!      }
+.................... 
+.................... }
+.................... 
+005E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

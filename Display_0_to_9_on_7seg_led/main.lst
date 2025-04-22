@@ -1,0 +1,133 @@
+CCS PCM C Compiler, Version 5.115, 43599               03-Mar-25 19:24
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\hien thi 0 to 9 led 7 doan\main.lst
+
+               ROM used:   81 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   029
+0003:  NOP
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  BCF    0A.0
+0005:  BCF    0A.1
+0006:  BCF    0A.2
+0007:  ADDWF  02,F
+0008:  RETLW  3F
+0009:  RETLW  06
+000A:  RETLW  5B
+000B:  RETLW  4F
+000C:  RETLW  66
+000D:  RETLW  6D
+000E:  RETLW  7D
+000F:  RETLW  07
+0010:  RETLW  7F
+0011:  RETLW  6F
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=6000000)
+.................... 
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+0012:  MOVLW  22
+0013:  MOVWF  04
+0014:  BCF    03.7
+0015:  MOVF   00,W
+0016:  BTFSC  03.2
+0017:  GOTO   026
+0018:  MOVLW  01
+0019:  MOVWF  78
+001A:  CLRF   77
+001B:  DECFSZ 77,F
+001C:  GOTO   01B
+001D:  DECFSZ 78,F
+001E:  GOTO   01A
+001F:  MOVLW  F1
+0020:  MOVWF  77
+0021:  DECFSZ 77,F
+0022:  GOTO   021
+0023:  NOP
+0024:  DECFSZ 00,F
+0025:  GOTO   018
+0026:  BCF    0A.3
+0027:  BCF    0A.4
+0028:  GOTO   04B (RETURN)
+.................... 
+.................... const unsigned char ma7doan[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f}; 
+.................... signed int dem;
+.................... void main()
+0029:  MOVF   03,W
+002A:  ANDLW  1F
+002B:  MOVWF  03
+002C:  BSF    03.5
+002D:  BSF    1F.0
+002E:  BSF    1F.1
+002F:  BSF    1F.2
+0030:  BCF    1F.3
+0031:  MOVLW  07
+0032:  MOVWF  1C
+0033:  BCF    03.7
+.................... {
+....................    set_tris_d(0x00);
+0034:  MOVLW  00
+0035:  MOVWF  08
+....................    while(TRUE)
+....................    {
+....................    for(dem= 0; dem <10; dem++){
+0036:  BCF    03.5
+0037:  CLRF   20
+0038:  BTFSC  20.7
+0039:  GOTO   03E
+003A:  MOVF   20,W
+003B:  SUBLW  09
+003C:  BTFSS  03.0
+003D:  GOTO   04F
+....................       output_d(ma7doan[dem]);
+003E:  MOVF   20,W
+003F:  CALL   004
+0040:  MOVWF  21
+0041:  BSF    03.5
+0042:  CLRF   08
+0043:  BCF    03.5
+0044:  MOVF   21,W
+0045:  MOVWF  08
+....................       delay_ms(300);
+0046:  MOVLW  02
+0047:  MOVWF  21
+0048:  MOVLW  96
+0049:  MOVWF  22
+004A:  GOTO   012
+004B:  DECFSZ 21,F
+004C:  GOTO   048
+004D:  INCF   20,F
+004E:  GOTO   038
+....................    }
+004F:  GOTO   037
+....................    }
+.................... 
+.................... }
+0050:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

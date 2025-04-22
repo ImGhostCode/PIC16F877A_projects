@@ -1,0 +1,8 @@
+ÀÄmain
+   ÀÄMAIN  0/27  Ram=1
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÀÄhienthi_1_led  0/45  Ram=2
+         ÃÄ@const705  0/14  Ram=0
+         ÃÄ@const708  0/8  Ram=0
+         ÀÄ@delay_ms2  (Inline)  Ram=1

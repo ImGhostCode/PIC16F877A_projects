@@ -1,0 +1,147 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020-023 logR2
+024-027 R2
+028-02B t
+02C-02D ntc_value
+02E     j
+02F     ma_tr
+030     ma_ch
+031     ma_dv
+032-033 MAIN.adc_value
+032-035 atan2.y
+034-037 MAIN.voltage
+036-039 atan2.x
+038-039 giaima_3so_xvn.x
+038     @delay_ms1.P1
+038-039 @DIV1616.P2
+038     MAIN.@SCRATCH1
+039     MAIN.@SCRATCH2
+03A-03D atan2.z
+03A-03B @DIV1616.P1
+03A     giaima_3so_xvn.@SCRATCH1
+03A     MAIN.@SCRATCH3
+03B     giaima_3so_xvn.@SCRATCH2
+03B     MAIN.@SCRATCH4
+03C-03D @DIVS1616.P1
+03C-03F log.x
+03C-03D @ITOF.P1
+03C-03F @SFTOI.P2
+03C     @DIV1616.@SCRATCH1
+03E.0   atan2.sign
+03E-03F @DIVS1616.P1
+03F     atan2.quad
+040-043 log.y
+040     @DIVS1616.@SCRATCH1
+041     @DIVS1616.@SCRATCH2
+044-047 log.res
+048-04B log.r
+04C-04F log.y2
+050     log.n
+051-052 @SITOF.P1
+051-054 @MULFF.P2
+051-054 @FLT.P3
+051     log.@SCRATCH1
+052     log.@SCRATCH2
+053     log.@SCRATCH3
+054     log.@SCRATCH4
+055-058 @MULFF.P1
+055-058 @DIVFF.P2
+055-058 @ADDFF.P3
+055-058 @FLT.P4
+059-05C @ADDFF.P1
+059-05C @DIVFF.P2
+059     @FLT.@SCRATCH1
+059     @MULFF.@SCRATCH1
+05A     @FLT.@SCRATCH2
+05A     @MULFF.@SCRATCH2
+05B     @MULFF.@SCRATCH3
+05C     @MULFF.@SCRATCH4
+05D     @MULFF.@SCRATCH5
+05D     @ADDFF.@SCRATCH1
+05D     @DIVFF.@SCRATCH1
+05E     @ADDFF.@SCRATCH2
+05E     @DIVFF.@SCRATCH2
+05F     @ADDFF.@SCRATCH3
+05F     @DIVFF.@SCRATCH3
+060     @ADDFF.@SCRATCH4
+060     @DIVFF.@SCRATCH4
+061     @ADDFF.@SCRATCH5
+061     @DIVFF.@SCRATCH5
+062     @ADDFF.@SCRATCH6
+062     @DIVFF.@SCRATCH6
+063     @ADDFF.@SCRATCH7
+064     @ADDFF.@SCRATCH8
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  ma7doan.call
+000008  ma7doan.data
+000012  @ITOF
+00002F  @MULFF
+0000A4  @DIVFF
+00016E  @ADDFF
+0002AF  @SITOF
+0002D4  log
+0002E9  @FLT
+0004B7  @SFTOI
+0004D8  @DIV1616
+0004FF  @DIVS1616
+00053D  giaima_3so_xvn
+00059D  @delay_ms1
+0005B2  hienthi_3so_quet
+0005E5  @cinit1
+0005E5  MAIN
+0005EF  @cinit2
+
+Project Directory:
+    D:\Embedded\Projects\PIC16F877A\Read B3950 and show 3 7-seq\
+
+Project Files:
+    main.c                                                  [29-Mar-25 12:05  CRC=26066AA0]
+    main.h                                                  [18-Mar-25 19:14  CRC=00000000]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [07-Mar-23 19:19  CRC=32478F9C]
+    C:\Program Files (x86)\PICC\Drivers\math.h              [05-May-20 12:57  CRC=02232397]
+
+Source signature=5C94416A
+Program memory checksum=0000
+Hex file CRC=F40E
+
+Units:
+    D:\Embedded\Projects\PIC16F877A\Read B3950 and show 3 7-seq\main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

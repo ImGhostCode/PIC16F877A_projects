@@ -1,0 +1,70 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.115
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\Turn on and off led using button\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=3
+D1=06-01-2025
+D1_L=4
+D1_L1=[68264]Project Opened.
+D1_L2=[68284]Started Editing.
+D1_L3=[68451]Stopped Editing.
+TotalEdit=15
+TotalDebug=0
+D1_E=3
+D1_D=0
+D1_L4=[68451]Project Closed.
+D2=07-01-2025
+D2_L=4
+D2_L1=[65557]Project Opened.
+D2_L2=[65572]Started Editing.
+D2_L3=[65970]Stopped Editing.
+D2_E=7
+D2_D=0
+D2_L4=[65970]Project Closed.
+D3=13-03-2025
+D3_L=11
+D3_L1=[40673]Project Opened.
+D3_L2=[40750]Started Editing.
+D3_L3=[40815]Stopped Editing.
+D3_E=5
+D3_D=0
+D3_L4=[40815]Project Closed.
+D3_L5=[41063]Project Opened.
+D3_L6=[41067]Started Editing.
+D3_L7=[41238]Project Closed.
+D3_L8=[41250]Project Opened.
+D3_L9=[41261]Started Editing.
+D3_L10=[41430]Stopped Editing.
+D3_L11=[41430]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=3
+2=..\..\Turn on off reverse led using button\main.c
+t2=1
+3=main.h
+t3=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=4
+[Units]
+Count=1
+1=main (main)

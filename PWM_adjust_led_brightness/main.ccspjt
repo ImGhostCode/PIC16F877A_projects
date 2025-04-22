@@ -1,0 +1,57 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\PWM Adjust led brightness\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=2
+D1=19-12-2024
+D1_L=4
+D1_L1=[67606]Project Opened.
+D1_L2=[67617]Started Editing.
+D1_L3=[67963]Stopped Editing.
+TotalEdit=35
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L4=[67963]Project Closed.
+D2=26-03-2025
+D2_L=8
+D2_L1=[33200]Project Opened.
+D2_L2=[33210]Started Editing.
+D2_L3=[35091]Stopped Editing.
+D2_L4=[35855]Started Editing.
+D2_L5=[36268]Stopped Editing.
+D2_L6=[36426]Started Editing.
+D2_L7=[36432]Stopped Editing.
+D2_E=29
+D2_D=0
+D2_L8=[36432]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=2
+2=main.h
+t2=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=11
+[Units]
+Count=1
+1=main (main)

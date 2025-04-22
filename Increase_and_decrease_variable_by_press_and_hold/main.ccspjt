@@ -1,0 +1,71 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.115
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\Turn on and off led using button\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=4
+D1=06-01-2025
+D1_L=4
+D1_L1=[68264]Project Opened.
+D1_L2=[68284]Started Editing.
+D1_L3=[68451]Stopped Editing.
+TotalEdit=32
+TotalDebug=0
+D1_E=3
+D1_D=0
+D1_L4=[68451]Project Closed.
+D2=07-01-2025
+D2_L=4
+D2_L1=[66401]Project Opened.
+D2_L2=[66409]Started Editing.
+D2_L3=[67084]Stopped Editing.
+D2_E=12
+D2_D=0
+D2_L4=[67084]Project Closed.
+D3=13-01-2025
+D3_L=2
+D3_L1=[68174]Project Opened.
+D3_L2=[68221]Project Closed.
+D4=13-03-2025
+D4_L=10
+D4_L1=[41442]Project Opened.
+D4_L2=[41456]Started Editing.
+D4_L3=[41988]Stopped Editing.
+D4_L4=[42020]Started Editing.
+D4_L5=[42687]Stopped Editing.
+D4_E=17
+D4_D=0
+D4_L6=[42687]Project Closed.
+D4_L7=[63369]Project Opened.
+D4_L8=[63488]Started Editing.
+D4_L9=[63866]Stopped Editing.
+D4_L10=[63997]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=89
+Count=2
+2=main.h
+t2=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=9
+[Units]
+Count=1
+1=main (main)

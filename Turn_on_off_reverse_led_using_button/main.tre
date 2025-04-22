@@ -1,0 +1,6 @@
+青main
+   青MAIN  0/45  Ram=0
+      団@cinit1  (Inline)  Ram=0
+      団@cinit2  (Inline)  Ram=0
+      青chongdoi_inv  0/46  Ram=0
+         青@delay_ms2  (Inline)  Ram=1

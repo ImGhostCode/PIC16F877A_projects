@@ -1,0 +1,122 @@
+CCS PCM C Compiler, Version 5.115, 43599               15-Mar-25 18:47
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Timer0 chop tat led 2s\main.lst
+
+               ROM used:   50 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   8 (2%) at main() level
+                           8 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... 
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(clock=6MHz)
+.................... 
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+.................... #bit tmr0if = 0x0b.2
+.................... 
+.................... unsigned INT d, bdt;
+.................... 
+.................... void main()
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  BSF    03.5
+0008:  BSF    1F.0
+0009:  BSF    1F.1
+000A:  BSF    1F.2
+000B:  BCF    1F.3
+000C:  MOVLW  07
+000D:  MOVWF  1C
+000E:  BCF    03.7
+.................... {
+....................    set_tris_d (0x00) ;
+000F:  MOVLW  00
+0010:  MOVWF  08
+....................    d = 0x00;
+0011:  BCF    03.5
+0012:  CLRF   20
+....................    output_d (d) ;
+0013:  BSF    03.5
+0014:  CLRF   08
+0015:  BCF    03.5
+0016:  MOVF   20,W
+0017:  MOVWF  08
+....................    setup_timer_0 (T0_INTERNAL|T0_DIV_256) ;
+0018:  BSF    03.5
+0019:  MOVF   01,W
+001A:  ANDLW  C0
+001B:  IORLW  07
+001C:  MOVWF  01
+....................    set_timer0 (0) ;
+001D:  BCF    03.5
+001E:  CLRF   01
+....................    bdt = 0;
+001F:  CLRF   21
+.................... 
+....................    WHILE (TRUE)
+....................    {
+....................       IF (tmr0if == 1)
+0020:  BTFSS  0B.2
+0021:  GOTO   030
+....................       {
+....................          bdt++;
+0022:  INCF   21,F
+....................          tmr0if = 0;
+0023:  BCF    0B.2
+....................          set_timer0(0);
+0024:  CLRF   01
+....................          if (bdt == 23) {
+0025:  MOVF   21,W
+0026:  SUBLW  17
+0027:  BTFSS  03.2
+0028:  GOTO   030
+....................             d = ~d;
+0029:  COMF   20,F
+....................             output_d (d) ;
+002A:  BSF    03.5
+002B:  CLRF   08
+002C:  BCF    03.5
+002D:  MOVF   20,W
+002E:  MOVWF  08
+....................             bdt = 0;
+002F:  CLRF   21
+....................          }
+....................       }
+0030:  GOTO   020
+....................    }
+.................... }
+.................... 
+0031:  SLEEP
+.................... // 6MHz => 1/4 => 1.5MHz
+.................... // 1.5Mhz / 256 => 5.860kHz
+.................... // 1 / 5.860kHz => 170.7us
+.................... // 170.7us * 256 = 43.699us = 43.7ms 
+.................... // 1s / 43.7ms = 23
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

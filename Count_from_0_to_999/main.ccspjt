@@ -1,0 +1,61 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.115
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\PIC16F877A\dem tu 0 den 99 led 7 doan\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=10-03-2025
+D1_L=22
+D1_L1=[41343]Project Opened.
+D1_L2=[41344]Started Editing.
+D1_L3=[42007]Stopped Editing.
+D1_L4=[42110]Started Editing.
+D1_L5=[42423]Stopped Editing.
+D1_L6=[42704]Started Editing.
+D1_L7=[42746]Stopped Editing.
+TotalEdit=38
+TotalDebug=0
+D1_E=38
+D1_D=0
+D1_L8=[42746]Project Closed.
+D1_L9=[60171]Project Opened.
+D1_L10=[60545]Started Editing.
+D1_L11=[60670]Stopped Editing.
+D1_L12=[60670]Project Closed.
+D1_L13=[60746]Project Opened.
+D1_L14=[61022]Started Editing.
+D1_L15=[61528]Stopped Editing.
+D1_L16=[61528]Project Closed.
+D1_L17=[61645]Project Opened.
+D1_L18=[61652]Started Editing.
+D1_L19=[62560]Stopped Editing.
+D1_L20=[62596]Started Editing.
+D1_L21=[63116]Stopped Editing.
+D1_L22=[63116]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=57
+Count=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=22
+[Units]
+Count=1
+1=main (main)

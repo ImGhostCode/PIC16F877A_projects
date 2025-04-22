@@ -1,0 +1,33 @@
+ÀÄmain
+   ÀÄMAIN  0/82  Ram=0
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÃÄgiaima_capdo_2so_xvn  0/56  Ram=4
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@const704  0/14  Ram=0
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÀÄ@const704  0/14  Ram=0
+      ÃÄphim_forw  0/50  Ram=2
+      ³  ÃÄ@MULS1616  0/46  Ram=6
+      ³  ÃÄgiaima_capdo_2so_xvn  0/56  Ram=4
+      ³  ³  ÀÄ*
+      ³  ÃÄdelay_hienthi  0/9  Ram=1
+      ³  ³  ÀÄhienthi_capdo  0/33  Ram=0
+      ³  ³     ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ³     ÀÄ@delay_ms1  0/20  Ram=1
+      ³  ÀÄhienthi_capdo  0/33  Ram=0
+      ³     ÀÄ*
+      ÃÄphim_rev  0/50  Ram=2
+      ³  ÃÄ@MULS1616  0/46  Ram=6
+      ³  ÃÄgiaima_capdo_2so_xvn  0/56  Ram=4
+      ³  ³  ÀÄ*
+      ³  ÃÄdelay_hienthi  0/9  Ram=1
+      ³  ³  ÀÄ*
+      ³  ÀÄhienthi_capdo  0/33  Ram=0
+      ³     ÀÄ*
+      ÀÄdongco_stop  0/13  Ram=0
+         ÃÄgiaima_capdo_2so_xvn  0/56  Ram=4
+         ³  ÀÄ*
+         ÀÄhienthi_capdo  0/33  Ram=0
+            ÀÄ*

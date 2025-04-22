@@ -1,0 +1,18 @@
+ÀÄmain
+   ÀÄMAIN  0/61  Ram=0
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÃÄphim_up  0/37  Ram=0
+      ³  ÀÄ@delay_ms2  0/21  Ram=1
+      ÃÄphim_down  0/39  Ram=0
+      ³  ÀÄ@delay_ms2  0/21  Ram=1
+      ÃÄgiaima_3so_xvn  0/93  Ram=4
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÀÄ@DIVS1616  0/62  Ram=6
+      ÀÄhienthi_3so_quet  0/51  Ram=0
+         ÃÄ@delay_ms2  0/21  Ram=1
+         ÃÄ@delay_ms2  0/21  Ram=1
+         ÀÄ@delay_ms2  0/21  Ram=1

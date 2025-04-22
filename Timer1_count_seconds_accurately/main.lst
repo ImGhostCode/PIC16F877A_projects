@@ -1,0 +1,336 @@
+CCS PCM C Compiler, Version 5.115, 43599               23-Mar-25 10:59
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Timer1 diem giay chinh xac\main.lst
+
+               ROM used:   225 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   16 (4%) at main() level
+                           20 (5%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0AE
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  MOVLW  8C
+0018:  MOVWF  04
+0019:  BTFSS  00.0
+001A:  GOTO   01D
+001B:  BTFSC  0C.0
+001C:  GOTO   02E
+001D:  MOVF   22,W
+001E:  MOVWF  04
+001F:  MOVF   23,W
+0020:  MOVWF  77
+0021:  MOVF   24,W
+0022:  MOVWF  78
+0023:  MOVF   25,W
+0024:  MOVWF  79
+0025:  MOVF   26,W
+0026:  MOVWF  7A
+0027:  MOVF   20,W
+0028:  MOVWF  0A
+0029:  SWAPF  21,W
+002A:  MOVWF  03
+002B:  SWAPF  7F,F
+002C:  SWAPF  7F,W
+002D:  RETFIE
+002E:  BCF    0A.3
+002F:  BCF    0A.4
+0030:  GOTO   03F
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0031:  BCF    0A.0
+0032:  BCF    0A.1
+0033:  BCF    0A.2
+0034:  ADDWF  02,F
+0035:  RETLW  3F
+0036:  RETLW  06
+0037:  RETLW  5B
+0038:  RETLW  4F
+0039:  RETLW  66
+003A:  RETLW  6D
+003B:  RETLW  7D
+003C:  RETLW  07
+003D:  RETLW  7F
+003E:  RETLW  6F
+*
+004A:  MOVF   2D,W
+004B:  CLRF   78
+004C:  SUBWF  2C,W
+004D:  BTFSC  03.0
+004E:  GOTO   052
+004F:  MOVF   2C,W
+0050:  MOVWF  77
+0051:  GOTO   05E
+0052:  CLRF   77
+0053:  MOVLW  08
+0054:  MOVWF  2E
+0055:  RLF    2C,F
+0056:  RLF    77,F
+0057:  MOVF   2D,W
+0058:  SUBWF  77,W
+0059:  BTFSC  03.0
+005A:  MOVWF  77
+005B:  RLF    78,F
+005C:  DECFSZ 2E,F
+005D:  GOTO   055
+005E:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #fuses HS, NOWDT, PUT, NOPROTECT, NOLVP
+.................... #use delay(clock=6MHz)
+*
+0076:  MOVLW  2B
+0077:  MOVWF  04
+0078:  BCF    03.7
+0079:  MOVF   00,W
+007A:  BTFSC  03.2
+007B:  GOTO   08A
+007C:  MOVLW  01
+007D:  MOVWF  78
+007E:  CLRF   77
+007F:  DECFSZ 77,F
+0080:  GOTO   07F
+0081:  DECFSZ 78,F
+0082:  GOTO   07E
+0083:  MOVLW  F1
+0084:  MOVWF  77
+0085:  DECFSZ 77,F
+0086:  GOTO   085
+0087:  NOP
+0088:  DECFSZ 00,F
+0089:  GOTO   07C
+008A:  RETURN
+.................... 
+.................... // Khai báo bi?n toàn c?c
+.................... volatile unsigned int8 giay = 0, bdt = 0;
+.................... unsigned int8 ma_ch, ma_dv;
+.................... const unsigned char ma7doan[10] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F}; 
+.................... 
+.................... #define TIMER1_PRELOAD 18658  // Giá tr? kh?i t?o Timer1
+.................... 
+.................... #int_TIMER1
+.................... void interrupt_timer1() 
+.................... {
+....................    bdt++;
+*
+003F:  INCF   28,F
+....................    set_timer1(TIMER1_PRELOAD);
+0040:  CLRF   0E
+0041:  MOVLW  48
+0042:  MOVWF  0F
+0043:  MOVLW  E2
+0044:  MOVWF  0E
+0045:  NOP
+0046:  BCF    0C.0
+0047:  BCF    0A.3
+0048:  BCF    0A.4
+0049:  GOTO   01D
+.................... }
+.................... 
+.................... void giaima_2so_xvn(unsigned int8 x) 
+.................... {
+....................    ma_dv = ma7doan[x % 10]; 
+*
+005F:  MOVF   2B,W
+0060:  MOVWF  2C
+0061:  MOVLW  0A
+0062:  MOVWF  2D
+0063:  CALL   04A
+0064:  MOVF   77,W
+0065:  CALL   031
+0066:  MOVWF  78
+0067:  MOVWF  2A
+....................    ma_ch = ma7doan[x / 10];
+0068:  MOVF   2B,W
+0069:  MOVWF  2C
+006A:  MOVLW  0A
+006B:  MOVWF  2D
+006C:  CALL   04A
+006D:  MOVF   78,W
+006E:  CALL   031
+006F:  MOVWF  78
+0070:  MOVWF  29
+.................... 
+....................    // N?u s? ch? có 1 ch? s?, t?t hàng ch?c
+....................    if (x < 10)
+0071:  MOVF   2B,W
+0072:  SUBLW  09
+0073:  BTFSC  03.0
+....................    {
+....................       ma_ch = 0x00;
+0074:  CLRF   29
+....................    }
+0075:  RETURN
+.................... }
+.................... 
+.................... void hienthi_2so_quet() 
+.................... {
+....................    // Hi?n th? hàng don v?
+....................    output_d(ma_dv);
+*
+008B:  BSF    03.5
+008C:  CLRF   08
+008D:  BCF    03.5
+008E:  MOVF   2A,W
+008F:  MOVWF  08
+....................    output_high(PIN_B0);
+0090:  BSF    03.5
+0091:  BCF    06.0
+0092:  BCF    03.5
+0093:  BSF    06.0
+....................    delay_ms(2);
+0094:  MOVLW  02
+0095:  MOVWF  2B
+0096:  CALL   076
+....................    output_low(PIN_B0);
+0097:  BSF    03.5
+0098:  BCF    06.0
+0099:  BCF    03.5
+009A:  BCF    06.0
+.................... 
+....................    // Hi?n th? hàng ch?c
+....................    output_d(ma_ch);
+009B:  BSF    03.5
+009C:  CLRF   08
+009D:  BCF    03.5
+009E:  MOVF   29,W
+009F:  MOVWF  08
+....................    output_high(PIN_B1);
+00A0:  BSF    03.5
+00A1:  BCF    06.1
+00A2:  BCF    03.5
+00A3:  BSF    06.1
+....................    delay_ms(2);
+00A4:  MOVLW  02
+00A5:  MOVWF  2B
+00A6:  CALL   076
+....................    output_low(PIN_B1);
+00A7:  BSF    03.5
+00A8:  BCF    06.1
+00A9:  BCF    03.5
+00AA:  BCF    06.1
+00AB:  BCF    0A.3
+00AC:  BCF    0A.4
+00AD:  GOTO   0D2 (RETURN)
+.................... }
+.................... 
+.................... void main()
+00AE:  MOVF   03,W
+00AF:  ANDLW  1F
+00B0:  MOVWF  03
+00B1:  CLRF   27
+00B2:  CLRF   28
+00B3:  BSF    03.5
+00B4:  BSF    1F.0
+00B5:  BSF    1F.1
+00B6:  BSF    1F.2
+00B7:  BCF    1F.3
+00B8:  MOVLW  07
+00B9:  MOVWF  1C
+00BA:  BCF    03.7
+.................... {
+....................    set_tris_b(0x00);
+00BB:  MOVLW  00
+00BC:  MOVWF  06
+....................    set_tris_d(0x00);
+00BD:  MOVWF  08
+....................    output_d(0x00);
+00BE:  CLRF   08
+00BF:  BCF    03.5
+00C0:  CLRF   08
+....................    
+....................    setup_timer_1(T1_INTERNAL | T1_DIV_BY_8);
+00C1:  MOVLW  B5
+00C2:  MOVWF  10
+....................    set_timer1(TIMER1_PRELOAD);
+00C3:  CLRF   0E
+00C4:  MOVLW  48
+00C5:  MOVWF  0F
+00C6:  MOVLW  E2
+00C7:  MOVWF  0E
+00C8:  NOP
+....................    enable_interrupts(GLOBAL);
+00C9:  MOVLW  C0
+00CA:  IORWF  0B,F
+....................    enable_interrupts(INT_TIMER1);
+00CB:  BSF    03.5
+00CC:  BSF    0C.0
+.................... 
+....................    giaima_2so_xvn(giay);
+00CD:  BCF    03.5
+00CE:  MOVF   27,W
+00CF:  MOVWF  2B
+00D0:  CALL   05F
+.................... 
+....................    while (TRUE)
+....................    {
+....................       hienthi_2so_quet();
+00D1:  GOTO   08B
+.................... 
+....................       if (bdt >= 4) 
+00D2:  MOVF   28,W
+00D3:  SUBLW  03
+00D4:  BTFSC  03.0
+00D5:  GOTO   0DF
+....................       {
+....................          bdt = 0;
+00D6:  CLRF   28
+....................          giay++;
+00D7:  INCF   27,F
+....................          if (giay >= 60) giay = 0;
+00D8:  MOVF   27,W
+00D9:  SUBLW  3B
+00DA:  BTFSS  03.0
+00DB:  CLRF   27
+....................          giaima_2so_xvn(giay);
+00DC:  MOVF   27,W
+00DD:  MOVWF  2B
+00DE:  CALL   05F
+....................       }
+00DF:  GOTO   0D1
+....................    }
+.................... }
+.................... 
+00E0:  SLEEP
+.................... 
+.................... // 16bit => 65,536
+.................... // 6MHz => 1/4 => 1.5MHz => 1/8 => 187.5kHz => 5.33us
+.................... //   250ms / 5.33us = 93,808
+.................... // TMR1= 65,536 - 46,878 = 18,658
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,0 +1,387 @@
+CCS PCM C Compiler, Version 5.115, 43599               28-Mar-25 18:46
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\External OCS Counter T0 with 3x7 led seq\main.lst
+
+               ROM used:   285 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   9 (2%) at main() level
+                           19 (5%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0FC
+0003:  NOP
+.................... 
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  BCF    0A.0
+0005:  BCF    0A.1
+0006:  BCF    0A.2
+0007:  ADDWF  02,F
+0008:  RETLW  3F
+0009:  RETLW  06
+000A:  RETLW  5B
+000B:  RETLW  4F
+000C:  RETLW  66
+000D:  RETLW  6D
+000E:  RETLW  7D
+000F:  RETLW  07
+0010:  RETLW  7F
+0011:  RETLW  6F
+0012:  MOVF   29,W
+0013:  XORWF  2B,W
+0014:  ANDLW  80
+0015:  MOVWF  2D
+0016:  BTFSS  29.7
+0017:  GOTO   01D
+0018:  COMF   28,F
+0019:  COMF   29,F
+001A:  INCF   28,F
+001B:  BTFSC  03.2
+001C:  INCF   29,F
+001D:  BTFSS  2B.7
+001E:  GOTO   024
+001F:  COMF   2A,F
+0020:  COMF   2B,F
+0021:  INCF   2A,F
+0022:  BTFSC  03.2
+0023:  INCF   2B,F
+0024:  CLRF   78
+0025:  CLRF   79
+0026:  CLRF   77
+0027:  CLRF   7A
+0028:  MOVF   2B,W
+0029:  BTFSS  03.2
+002A:  GOTO   02E
+002B:  MOVF   2A,W
+002C:  BTFSC  03.2
+002D:  GOTO   048
+002E:  MOVLW  10
+002F:  MOVWF  2C
+0030:  BCF    03.0
+0031:  RLF    28,F
+0032:  RLF    29,F
+0033:  RLF    77,F
+0034:  RLF    7A,F
+0035:  MOVF   2B,W
+0036:  SUBWF  7A,W
+0037:  BTFSS  03.2
+0038:  GOTO   03B
+0039:  MOVF   2A,W
+003A:  SUBWF  77,W
+003B:  BTFSS  03.0
+003C:  GOTO   044
+003D:  MOVF   2A,W
+003E:  SUBWF  77,F
+003F:  BTFSS  03.0
+0040:  DECF   7A,F
+0041:  MOVF   2B,W
+0042:  SUBWF  7A,F
+0043:  BSF    03.0
+0044:  RLF    78,F
+0045:  RLF    79,F
+0046:  DECFSZ 2C,F
+0047:  GOTO   030
+0048:  BTFSS  2D.7
+0049:  GOTO   04F
+004A:  COMF   78,F
+004B:  COMF   79,F
+004C:  INCF   78,F
+004D:  BTFSC  03.2
+004E:  INCF   79,F
+004F:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=6000000)
+*
+00B0:  MOVLW  24
+00B1:  MOVWF  04
+00B2:  BCF    03.7
+00B3:  MOVF   00,W
+00B4:  BTFSC  03.2
+00B5:  GOTO   0C4
+00B6:  MOVLW  01
+00B7:  MOVWF  78
+00B8:  CLRF   77
+00B9:  DECFSZ 77,F
+00BA:  GOTO   0B9
+00BB:  DECFSZ 78,F
+00BC:  GOTO   0B8
+00BD:  MOVLW  F1
+00BE:  MOVWF  77
+00BF:  DECFSZ 77,F
+00C0:  GOTO   0BF
+00C1:  NOP
+00C2:  DECFSZ 00,F
+00C3:  GOTO   0B6
+00C4:  RETURN
+.................... 
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... 
+.................... unsigned INT T0;
+.................... unsigned int ma_tr, ma_ch, ma_dv;
+.................... const unsigned char ma7doan[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f}; 
+.................... 
+.................... void giaima_3so_xvn(signed int16 x)
+.................... {
+....................    ma_dv = ma7doan[x % 10]; // Hàng don v?
+*
+0050:  MOVF   25,W
+0051:  MOVWF  29
+0052:  MOVF   24,W
+0053:  MOVWF  28
+0054:  CLRF   2B
+0055:  MOVLW  0A
+0056:  MOVWF  2A
+0057:  CALL   012
+0058:  MOVF   77,W
+0059:  MOVWF  26
+005A:  MOVF   7A,W
+005B:  MOVWF  27
+005C:  MOVWF  7A
+005D:  MOVF   77,W
+005E:  CALL   004
+005F:  MOVWF  78
+0060:  MOVWF  23
+....................    ma_ch = ma7doan[ (x / 10) % 10]; // Hàng ch?c
+0061:  MOVF   25,W
+0062:  MOVWF  29
+0063:  MOVF   24,W
+0064:  MOVWF  28
+0065:  CLRF   2B
+0066:  MOVLW  0A
+0067:  MOVWF  2A
+0068:  CALL   012
+0069:  MOVF   79,W
+006A:  MOVWF  27
+006B:  MOVF   78,W
+006C:  MOVWF  26
+006D:  MOVF   79,W
+006E:  MOVWF  29
+006F:  MOVF   78,W
+0070:  MOVWF  28
+0071:  CLRF   2B
+0072:  MOVLW  0A
+0073:  MOVWF  2A
+0074:  CALL   012
+0075:  MOVF   77,W
+0076:  MOVWF  26
+0077:  MOVF   7A,W
+0078:  MOVWF  27
+0079:  MOVWF  7A
+007A:  MOVF   77,W
+007B:  CALL   004
+007C:  MOVWF  78
+007D:  MOVWF  22
+....................    ma_tr = ma7doan[ (x / 100) % 10]; // Hàng tram
+007E:  MOVF   25,W
+007F:  MOVWF  29
+0080:  MOVF   24,W
+0081:  MOVWF  28
+0082:  CLRF   2B
+0083:  MOVLW  64
+0084:  MOVWF  2A
+0085:  CALL   012
+0086:  MOVF   79,W
+0087:  MOVWF  27
+0088:  MOVF   78,W
+0089:  MOVWF  26
+008A:  MOVF   79,W
+008B:  MOVWF  29
+008C:  MOVF   78,W
+008D:  MOVWF  28
+008E:  CLRF   2B
+008F:  MOVLW  0A
+0090:  MOVWF  2A
+0091:  CALL   012
+0092:  MOVF   77,W
+0093:  MOVWF  26
+0094:  MOVF   7A,W
+0095:  MOVWF  27
+0096:  MOVWF  7A
+0097:  MOVF   77,W
+0098:  CALL   004
+0099:  MOVWF  78
+009A:  MOVWF  21
+....................    // ?n s? 0 ? hàng tram n?u x < 100
+....................    if (x < 100)
+009B:  BTFSC  25.7
+009C:  GOTO   0A3
+009D:  MOVF   25,F
+009E:  BTFSS  03.2
+009F:  GOTO   0A4
+00A0:  MOVF   24,W
+00A1:  SUBLW  63
+00A2:  BTFSC  03.0
+....................    {
+....................       ma_tr = 0x00;
+00A3:  CLRF   21
+....................    }
+.................... 
+....................    // ?n s? 0 ? hàng ch?c n?u x < 10
+....................    if (x < 10)
+00A4:  BTFSC  25.7
+00A5:  GOTO   0AC
+00A6:  MOVF   25,F
+00A7:  BTFSS  03.2
+00A8:  GOTO   0AD
+00A9:  MOVF   24,W
+00AA:  SUBLW  09
+00AB:  BTFSC  03.0
+....................    {
+....................       ma_ch = 0x00;
+00AC:  CLRF   22
+....................    }
+00AD:  BCF    0A.3
+00AE:  BCF    0A.4
+00AF:  GOTO   11A (RETURN)
+.................... }
+.................... 
+.................... void hienthi_3so_quet() 
+.................... {
+....................    output_b (0x00) ;
+*
+00C5:  BSF    03.5
+00C6:  CLRF   06
+00C7:  BCF    03.5
+00C8:  CLRF   06
+.................... 
+....................    // Hi?n th? hàng don v?
+....................    output_d (ma_dv);
+00C9:  BSF    03.5
+00CA:  CLRF   08
+00CB:  BCF    03.5
+00CC:  MOVF   23,W
+00CD:  MOVWF  08
+....................    output_high (PIN_B0);
+00CE:  BSF    03.5
+00CF:  BCF    06.0
+00D0:  BCF    03.5
+00D1:  BSF    06.0
+....................    delay_ms (2);
+00D2:  MOVLW  02
+00D3:  MOVWF  24
+00D4:  CALL   0B0
+....................    output_low (PIN_B0);
+00D5:  BSF    03.5
+00D6:  BCF    06.0
+00D7:  BCF    03.5
+00D8:  BCF    06.0
+.................... 
+....................    // Hi?n th? hàng ch?c
+....................    output_d (ma_ch);
+00D9:  BSF    03.5
+00DA:  CLRF   08
+00DB:  BCF    03.5
+00DC:  MOVF   22,W
+00DD:  MOVWF  08
+....................    output_high (PIN_B1);
+00DE:  BSF    03.5
+00DF:  BCF    06.1
+00E0:  BCF    03.5
+00E1:  BSF    06.1
+....................    delay_ms (2);
+00E2:  MOVLW  02
+00E3:  MOVWF  24
+00E4:  CALL   0B0
+....................    output_low (PIN_B1);
+00E5:  BSF    03.5
+00E6:  BCF    06.1
+00E7:  BCF    03.5
+00E8:  BCF    06.1
+.................... 
+....................    // Hi?n th? hàng tram
+....................    output_d (ma_tr);
+00E9:  BSF    03.5
+00EA:  CLRF   08
+00EB:  BCF    03.5
+00EC:  MOVF   21,W
+00ED:  MOVWF  08
+....................    output_high (PIN_B2);
+00EE:  BSF    03.5
+00EF:  BCF    06.2
+00F0:  BCF    03.5
+00F1:  BSF    06.2
+....................    delay_ms (2);
+00F2:  MOVLW  02
+00F3:  MOVWF  24
+00F4:  CALL   0B0
+....................    output_low (PIN_B2);
+00F5:  BSF    03.5
+00F6:  BCF    06.2
+00F7:  BCF    03.5
+00F8:  BCF    06.2
+00F9:  BCF    0A.3
+00FA:  BCF    0A.4
+00FB:  GOTO   11B (RETURN)
+.................... }
+.................... 
+.................... void main()
+00FC:  MOVF   03,W
+00FD:  ANDLW  1F
+00FE:  MOVWF  03
+00FF:  BSF    03.5
+0100:  BSF    1F.0
+0101:  BSF    1F.1
+0102:  BSF    1F.2
+0103:  BCF    1F.3
+0104:  MOVLW  07
+0105:  MOVWF  1C
+0106:  BCF    03.7
+.................... {
+....................    set_tris_b (0x00);
+0107:  MOVLW  00
+0108:  MOVWF  06
+....................    set_tris_d (0x00);
+0109:  MOVWF  08
+....................    output_d (0x00) ;
+010A:  CLRF   08
+010B:  BCF    03.5
+010C:  CLRF   08
+....................    setup_timer_0 (T0_EXT_L_TO_H|T0_DIV_1);
+010D:  BSF    03.5
+010E:  MOVF   01,W
+010F:  ANDLW  C7
+0110:  IORLW  28
+0111:  MOVWF  01
+....................    set_timer0 (0);
+0112:  BCF    03.5
+0113:  CLRF   01
+.................... 
+....................    while (TRUE)
+....................    {
+....................             T0 = get_timer0 ();
+0114:  MOVF   01,W
+0115:  MOVWF  20
+....................             giaima_3so_xvn (T0) ;
+0116:  CLRF   25
+0117:  MOVF   20,W
+0118:  MOVWF  24
+0119:  GOTO   050
+....................       hienthi_3so_quet ();
+011A:  GOTO   0C5
+011B:  GOTO   114
+....................    }
+.................... }
+.................... 
+011C:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

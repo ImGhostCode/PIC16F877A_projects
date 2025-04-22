@@ -1,0 +1,87 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\External OCS Counter T0 with 3x7 led seq\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=5
+D1=10-12-2024
+D1_L=4
+D1_L1=[77013]Project Opened.
+D1_L2=[77041]Started Editing.
+D1_L3=[77940]Stopped Editing.
+TotalEdit=54
+TotalDebug=0
+D1_E=15
+D1_D=0
+D1_L4=[77940]Project Closed.
+D2=16-03-2025
+D2_L=10
+D2_L1=[49538]Project Opened.
+D2_L2=[49547]Started Editing.
+D2_L3=[50088]Stopped Editing.
+D2_E=9
+D2_D=0
+D2_L4=[51726]Project Closed.
+D2_L5=[51726]Project Opened.
+D2_L6=[51738]Project Closed.
+D2_L7=[51911]Project Opened.
+D2_L8=[53011]Started Editing.
+D2_L9=[53197]Stopped Editing.
+D2_L10=[53197]Project Closed.
+D3=17-03-2025
+D3_L=4
+D3_L1=[77094]Project Opened.
+D3_L2=[77105]Started Editing.
+D3_L3=[77406]Stopped Editing.
+D3_E=6
+D3_D=0
+D3_L4=[77406]Project Closed.
+D4=25-03-2025
+D4_L=4
+D4_L1=[39157]Project Opened.
+D4_L2=[39173]Started Editing.
+D4_L3=[39480]Stopped Editing.
+D4_E=1
+D4_D=0
+D4_L4=[39999]Project Closed.
+D5=28-03-2025
+D5_L=6
+D5_L1=[38942]Project Opened.
+D5_L2=[39406]Project Closed.
+D5_L3=[66201]Project Opened.
+D5_L4=[66214]Started Editing.
+D5_L5=[67881]Stopped Editing.
+D5_E=23
+D5_D=0
+D5_L6=[68105]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=49
+Count=3
+2=C:\Program Files (x86)\PICC\Devices\16F877A.h
+t2=663
+3=main.h
+t3=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=18
+[Units]
+Count=1
+1=main (main)

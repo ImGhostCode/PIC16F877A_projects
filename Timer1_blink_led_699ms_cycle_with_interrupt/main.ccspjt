@@ -1,0 +1,75 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\Timer1 chop tat led\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=3
+D1=05-12-2024
+D1_L=4
+D1_L1=[72916]Project Opened.
+D1_L2=[72968]Started Editing.
+D1_L3=[73625]Stopped Editing.
+TotalEdit=43
+TotalDebug=0
+D1_E=11
+D1_D=0
+D1_L4=[73625]Project Closed.
+D2=14-03-2025
+D2_L=4
+D2_L1=[65551]Project Opened.
+D2_L2=[65660]Started Editing.
+D2_L3=[67272]Stopped Editing.
+D2_E=27
+D2_D=0
+D2_L4=[67272]Project Closed.
+D3=20-03-2025
+D3_L=16
+D3_L1=[39914]Project Opened.
+D3_L2=[39923]Started Editing.
+D3_L3=[39994]Stopped Editing.
+D3_E=5
+D3_D=0
+D3_L4=[39994]Project Closed.
+D3_L5=[40002]Project Opened.
+D3_L6=[40012]Started Editing.
+D3_L7=[40083]Stopped Editing.
+D3_L8=[40083]Project Closed.
+D3_L9=[40944]Project Opened.
+D3_L10=[40948]Started Editing.
+D3_L11=[40953]Stopped Editing.
+D3_L12=[40953]Project Closed.
+D3_L13=[40958]Project Opened.
+D3_L14=[40974]Project Closed.
+D3_L15=[40981]Project Opened.
+D3_L16=[40984]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=2
+2=main.h
+t2=1
+3=C:\Program Files (x86)\PICCDEMO\Devices\16F887.h
+t3=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=14
+[Units]
+Count=1
+1=main (main)

@@ -1,0 +1,78 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020-023 mqcot
+024-033 doi_ma_phim
+034-043 ma7doan
+044     mp
+045     quet_mtp_4x4.maphim
+045     MAIN.@SCRATCH1
+046     quet_mtp_4x4.hang
+047     quet_mtp_4x4.cot
+048     @delay_ms2.P1
+048     quet_mtp_4x4.@SCRATCH1
+049     @WRITEBITA.P1
+049     @READBITA.P2
+04A-04B @READBITA.P1
+04A     @WRITEBITA.P2
+04B-04C @WRITEBITA.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @WRITEBITA
+000026  @READBITA
+000041  quet_mtp_4x4
+00007A  @delay_ms2
+0000B5  MAIN
+0000B5  @cinit1
+0000C1  @cinit2
+
+Project Directory:
+    D:\Embedded\Projects\PIC16F877A\Show pressed key on 7-seg\
+
+Project Files:
+    main.c                                                  [13-Mar-25 19:04  CRC=B89F2E8F]
+    main.h                                                  [13-Mar-25 18:31  CRC=00000000]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [07-Mar-23 19:19  CRC=32478F9C]
+
+Source signature=1D2E4DC7
+Program memory checksum=0000
+Hex file CRC=E82A
+
+Units:
+    D:\Embedded\Projects\PIC16F877A\Show pressed key on 7-seg\main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

@@ -1,0 +1,136 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\External OCS Counter T0 with 3x7 led seq\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=8
+D1=10-12-2024
+D1_L=4
+D1_L1=[77013]Project Opened.
+D1_L2=[77041]Started Editing.
+D1_L3=[77940]Stopped Editing.
+TotalEdit=57
+TotalDebug=0
+D1_E=15
+D1_D=0
+D1_L4=[77940]Project Closed.
+D2=12-12-2024
+D2_L=10
+D2_L1=[66929]Project Opened.
+D2_L2=[66941]Started Editing.
+D2_L3=[67504]Stopped Editing.
+D2_L4=[67867]Started Editing.
+D2_L5=[68361]Stopped Editing.
+D2_L6=[68377]Started Editing.
+D2_L7=[68695]Stopped Editing.
+D2_L8=[68850]Started Editing.
+D2_L9=[69287]Stopped Editing.
+D2_E=11
+D2_D=0
+D2_L10=[69594]Project Closed.
+D3=13-12-2024
+D3_L=7
+D3_L1=[68923]Project Opened.
+D3_L2=[68960]Project Opened.
+D3_L3=[68969]Started Editing.
+D3_L4=[69424]Stopped Editing.
+D3_L5=[70394]Started Editing.
+D3_L6=[70628]Stopped Editing.
+D3_E=7
+D3_D=0
+D3_L7=[70628]Project Closed.
+D4=16-12-2024
+D4_L=2
+D4_L1=[69609]Project Opened.
+D4_L2=[69613]Project Closed.
+D5=21-01-2025
+D5_L=4
+D5_L1=[67078]Project Opened.
+D5_L2=[67142]Started Editing.
+D5_L3=[67531]Stopped Editing.
+D5_E=7
+D5_D=0
+D5_L4=[67531]Project Closed.
+D6=19-03-2025
+D6_L=15
+D6_L1=[36658]Project Opened.
+D6_L2=[36688]Started Editing.
+D6_L3=[36700]Stopped Editing.
+D6_E=6
+D6_D=0
+D6_L4=[36700]Project Closed.
+D6_L5=[36709]Project Opened.
+D6_L6=[36723]Started Editing.
+D6_L7=[36734]Project Closed.
+D6_L8=[36738]Project Opened.
+D6_L9=[36771]Started Editing.
+D6_L10=[36780]Stopped Editing.
+D6_L11=[36780]Project Closed.
+D6_L12=[36792]Project Opened.
+D6_L13=[36806]Started Editing.
+D6_L14=[37003]Stopped Editing.
+D6_L15=[37003]Project Closed.
+D7=29-03-2025
+D7_L=23
+D7_L1=[42994]Project Opened.
+D7_L2=[43462]Started Editing.
+D7_L3=[43527]Stopped Editing.
+D7_E=11
+D7_D=0
+D7_L4=[43527]Project Closed.
+D7_L5=[43699]Project Opened.
+D7_L6=[43722]Started Editing.
+D7_L7=[43736]Stopped Editing.
+D7_L8=[43736]Project Closed.
+D7_L9=[43759]Project Opened.
+D7_L10=[43762]Started Editing.
+D7_L11=[43784]Project Closed.
+D7_L12=[43794]Project Opened.
+D7_L13=[43798]Started Editing.
+D7_L14=[43831]Stopped Editing.
+D7_L15=[43831]Project Closed.
+D7_L16=[43840]Project Opened.
+D7_L17=[43844]Started Editing.
+D7_L18=[44273]Stopped Editing.
+D7_L19=[44273]Project Closed.
+D7_L20=[68612]Project Opened.
+D7_L21=[68677]Started Editing.
+D7_L22=[68892]Stopped Editing.
+D7_L23=[68892]Project Closed.
+D8=30-03-2025
+D8_L=2
+D8_L1=[38610]Project Opened.
+D8_L2=[38613]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=48
+Count=2
+2=..\Read B3950 and show 3 7-seq\main.c
+t2=1
+3=main.h
+t3=1
+4=..\Read B3950 and show 3 7-seq\main.c
+t4=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=18
+[Units]
+Count=1
+1=main (main)

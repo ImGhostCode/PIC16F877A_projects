@@ -1,0 +1,131 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F877A
+CCSVerions=5.117d
+Compiler=PCM
+CCSVersion=5.115
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[D:\Embedded\Projects\PWM Adjust led brightness\main]
+Type=4
+[mru-list]
+1=main.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=9
+D1=19-12-2024
+D1_L=4
+D1_L1=[67606]Project Opened.
+D1_L2=[67617]Started Editing.
+D1_L3=[67963]Stopped Editing.
+TotalEdit=125
+TotalDebug=0
+D1_E=6
+D1_D=0
+D1_L4=[67963]Project Closed.
+D2=20-12-2024
+D2_L=4
+D2_L1=[68771]Project Opened.
+D2_L2=[68780]Started Editing.
+D2_L3=[69110]Stopped Editing.
+D2_E=6
+D2_D=0
+D2_L4=[69110]Project Closed.
+D3=21-12-2024
+D3_L=20
+D3_L1=[67508]Project Opened.
+D3_L2=[67516]Started Editing.
+D3_L3=[67793]Stopped Editing.
+D3_E=7
+D3_D=0
+D3_L4=[67793]Project Closed.
+D3_L5=[67803]Project Opened.
+D3_L6=[67842]Started Editing.
+D3_L7=[67851]Stopped Editing.
+D3_L8=[67851]Project Closed.
+D3_L9=[67878]Project Opened.
+D3_L10=[68053]Project Closed.
+D3_L11=[68053]Project Opened.
+D3_L12=[68081]Started Editing.
+D3_L13=[68095]Stopped Editing.
+D3_L14=[68095]Project Closed.
+D3_L15=[68401]Project Opened.
+D3_L16=[68427]Project Closed.
+D3_L17=[69001]Project Opened.
+D3_L18=[69029]Project Closed.
+D3_L19=[69226]Project Opened.
+D3_L20=[69283]Project Closed.
+D4=22-12-2024
+D4_L=4
+D4_L1=[36008]Project Opened.
+D4_L2=[36025]Started Editing.
+D4_L3=[36254]Stopped Editing.
+D4_E=4
+D4_D=0
+D4_L4=[36254]Project Closed.
+D5=26-12-2024
+D5_L=4
+D5_L1=[65700]Project Opened.
+D5_L2=[65740]Started Editing.
+D5_L3=[66417]Stopped Editing.
+D5_E=12
+D5_D=0
+D5_L4=[66417]Project Closed.
+D6=27-12-2024
+D6_L=6
+D6_L1=[64136]Project Opened.
+D6_L2=[64200]Started Editing.
+D6_L3=[66048]Stopped Editing.
+D6_L4=[66100]Started Editing.
+D6_L5=[66165]Stopped Editing.
+D6_E=27
+D6_D=0
+D6_L6=[66165]Project Closed.
+D7=06-01-2025
+D7_L=2
+D7_L1=[68074]Project Opened.
+D7_L2=[68264]Project Closed.
+D8=31-03-2025
+D8_L=4
+D8_L1=[66395]Project Opened.
+D8_L2=[66400]Started Editing.
+D8_L3=[68454]Stopped Editing.
+D8_E=35
+D8_D=0
+D8_L4=[68454]Project Closed.
+D9=01-04-2025
+D9_L=12
+D9_L1=[35191]Project Opened.
+D9_L2=[35211]Started Editing.
+D9_L3=[35937]Stopped Editing.
+D9_L4=[35964]Started Editing.
+D9_L5=[36898]Stopped Editing.
+D9_E=28
+D9_D=0
+D9_L6=[36898]Project Closed.
+D9_L7=[38496]Project Opened.
+D9_L8=[38505]Started Editing.
+D9_L9=[39093]Stopped Editing.
+D9_L10=[39996]Started Editing.
+D9_L11=[40297]Stopped Editing.
+D9_L12=[41332]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=144
+Count=2
+2=main.h
+t2=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=49
+[Units]
+Count=1
+1=main (main)

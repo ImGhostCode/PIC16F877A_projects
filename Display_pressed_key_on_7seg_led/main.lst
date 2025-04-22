@@ -1,0 +1,409 @@
+CCS PCM C Compiler, Version 5.115, 43599               13-Mar-25 19:04
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Show pressed key on 7-seg\main.lst
+
+               ROM used:   299 words (4%)
+                           Largest free fragment is 2048
+               RAM used:   43 (12%) at main() level
+                           50 (14%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0B5
+0003:  NOP
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  MOVF   49,W
+0005:  ANDLW  07
+0006:  MOVWF  77
+0007:  RRF    49,W
+0008:  MOVWF  78
+0009:  RRF    78,F
+000A:  RRF    78,F
+000B:  MOVLW  1F
+000C:  ANDWF  78,F
+000D:  MOVF   78,W
+000E:  ADDWF  4B,W
+000F:  MOVWF  04
+0010:  BCF    03.7
+0011:  BTFSC  4C.0
+0012:  BSF    03.7
+0013:  CLRF   78
+0014:  INCF   78,F
+0015:  INCF   77,F
+0016:  GOTO   018
+0017:  RLF    78,F
+0018:  DECFSZ 77,F
+0019:  GOTO   017
+001A:  MOVF   4A,F
+001B:  BTFSC  03.2
+001C:  GOTO   020
+001D:  MOVF   78,W
+001E:  IORWF  00,F
+001F:  GOTO   023
+0020:  COMF   78,F
+0021:  MOVF   78,W
+0022:  ANDWF  00,F
+0023:  BCF    0A.3
+0024:  BCF    0A.4
+0025:  GOTO   098 (RETURN)
+0026:  MOVF   49,W
+0027:  ANDLW  07
+0028:  MOVWF  77
+0029:  RRF    49,W
+002A:  MOVWF  78
+002B:  RRF    78,F
+002C:  RRF    78,F
+002D:  MOVLW  1F
+002E:  ANDWF  78,F
+002F:  MOVF   78,W
+0030:  ADDWF  4A,W
+0031:  MOVWF  04
+0032:  BCF    03.7
+0033:  BTFSC  4B.0
+0034:  BSF    03.7
+0035:  MOVF   00,W
+0036:  MOVWF  78
+0037:  INCF   77,F
+0038:  GOTO   03A
+0039:  RRF    78,F
+003A:  DECFSZ 77,F
+003B:  GOTO   039
+003C:  MOVLW  01
+003D:  ANDWF  78,F
+003E:  BCF    0A.3
+003F:  BCF    0A.4
+0040:  GOTO   09D (RETURN)
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=6000000)
+.................... 
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+*
+007A:  MOVLW  48
+007B:  MOVWF  04
+007C:  BCF    03.7
+007D:  MOVF   00,W
+007E:  BTFSC  03.2
+007F:  GOTO   08E
+0080:  MOVLW  01
+0081:  MOVWF  78
+0082:  CLRF   77
+0083:  DECFSZ 77,F
+0084:  GOTO   083
+0085:  DECFSZ 78,F
+0086:  GOTO   082
+0087:  MOVLW  F1
+0088:  MOVWF  77
+0089:  DECFSZ 77,F
+008A:  GOTO   089
+008B:  NOP
+008C:  DECFSZ 00,F
+008D:  GOTO   080
+.................... 
+.................... #define h0 PIN_B4
+.................... #define h1 PIN_B5
+.................... #define h2 PIN_B6
+.................... #define h3 PIN_B7
+.................... 
+.................... // Giá tr? xu?t ra cho t?ng c?t (Ch?nh s?a l?i dúng)
+.................... unsigned int8 mqcot[] = {0b00001110, 0b00001101, 0b00001011, 0b00000111};
+*
+00C2:  MOVLW  0E
+00C3:  BCF    03.5
+00C4:  MOVWF  20
+00C5:  MOVLW  0D
+00C6:  MOVWF  21
+00C7:  MOVLW  0B
+00C8:  MOVWF  22
+00C9:  MOVLW  07
+00CA:  MOVWF  23
+.................... 
+.................... // B?ng mã d?i phím theo so d? bàn phím 4x4
+.................... unsigned int8 doi_ma_phim[] = { 
+....................    1, 2, 3, 0xA, 
+....................    4, 5, 6, 0xB, 
+....................    7, 8, 9, 0xC, 
+....................    0xE, 0, 0xF, 0xD 
+.................... };
+00CB:  MOVLW  01
+00CC:  MOVWF  24
+00CD:  MOVLW  02
+00CE:  MOVWF  25
+00CF:  MOVLW  03
+00D0:  MOVWF  26
+00D1:  MOVLW  0A
+00D2:  MOVWF  27
+00D3:  MOVLW  04
+00D4:  MOVWF  28
+00D5:  MOVLW  05
+00D6:  MOVWF  29
+00D7:  MOVLW  06
+00D8:  MOVWF  2A
+00D9:  MOVLW  0B
+00DA:  MOVWF  2B
+00DB:  MOVLW  07
+00DC:  MOVWF  2C
+00DD:  MOVLW  08
+00DE:  MOVWF  2D
+00DF:  MOVLW  09
+00E0:  MOVWF  2E
+00E1:  MOVLW  0C
+00E2:  MOVWF  2F
+00E3:  MOVLW  0E
+00E4:  MOVWF  30
+00E5:  CLRF   31
+00E6:  MOVLW  0F
+00E7:  MOVWF  32
+00E8:  MOVLW  0D
+00E9:  MOVWF  33
+.................... 
+.................... // Mã LED 7 do?n (Cathode chung)
+.................... unsigned int8 ma7doan[] = { 
+....................    0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 
+....................    0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71
+.................... };
+00EA:  MOVLW  3F
+00EB:  MOVWF  34
+00EC:  MOVLW  06
+00ED:  MOVWF  35
+00EE:  MOVLW  5B
+00EF:  MOVWF  36
+00F0:  MOVLW  4F
+00F1:  MOVWF  37
+00F2:  MOVLW  66
+00F3:  MOVWF  38
+00F4:  MOVLW  6D
+00F5:  MOVWF  39
+00F6:  MOVLW  7D
+00F7:  MOVWF  3A
+00F8:  MOVLW  07
+00F9:  MOVWF  3B
+00FA:  MOVLW  7F
+00FB:  MOVWF  3C
+00FC:  MOVLW  6F
+00FD:  MOVWF  3D
+00FE:  MOVLW  77
+00FF:  MOVWF  3E
+0100:  MOVLW  7C
+0101:  MOVWF  3F
+0102:  MOVLW  39
+0103:  MOVWF  40
+0104:  MOVLW  5E
+0105:  MOVWF  41
+0106:  MOVLW  79
+0107:  MOVWF  42
+0108:  MOVLW  71
+0109:  MOVWF  43
+.................... 
+.................... unsigned int8 mp = 0xFF; // Giá tr? m?c d?nh khi chua nh?n phím
+.................... 
+.................... // Hàm quét bàn phím ma tr?n 4x4
+.................... unsigned int quet_mtp_4x4() {
+*
+0041:  MOVLW  FF
+0042:  MOVWF  45
+....................    unsigned int maphim = 0xFF;
+....................    unsigned int8 hang, cot;
+.................... 
+....................    for (cot = 0; cot < 4; cot++) {
+0043:  CLRF   47
+0044:  MOVF   47,W
+0045:  SUBLW  03
+0046:  BTFSS  03.0
+0047:  GOTO   0B0
+....................       output_b(mqcot[cot]); // Kích ho?t c?t hi?n t?i
+0048:  MOVLW  20
+0049:  ADDWF  47,W
+004A:  MOVWF  04
+004B:  BCF    03.7
+004C:  MOVF   00,W
+004D:  MOVWF  48
+004E:  BSF    03.5
+004F:  CLRF   06
+0050:  BCF    03.5
+0051:  MOVF   48,W
+0052:  MOVWF  06
+....................       delay_us(100); // Ch? ?n d?nh
+0053:  MOVLW  31
+0054:  MOVWF  77
+0055:  DECFSZ 77,F
+0056:  GOTO   055
+0057:  GOTO   058
+.................... 
+....................       if (!input(h0)) { hang = 0; }
+0058:  BSF    03.5
+0059:  BSF    06.4
+005A:  BCF    03.5
+005B:  BTFSC  06.4
+005C:  GOTO   05F
+005D:  CLRF   46
+005E:  GOTO   078
+....................       else if (!input(h1)) { hang = 1; }
+005F:  BSF    03.5
+0060:  BSF    06.5
+0061:  BCF    03.5
+0062:  BTFSC  06.5
+0063:  GOTO   067
+0064:  MOVLW  01
+0065:  MOVWF  46
+0066:  GOTO   078
+....................       else if (!input(h2)) { hang = 2; }
+0067:  BSF    03.5
+0068:  BSF    06.6
+0069:  BCF    03.5
+006A:  BTFSC  06.6
+006B:  GOTO   06F
+006C:  MOVLW  02
+006D:  MOVWF  46
+006E:  GOTO   078
+....................       else if (!input(h3)) { hang = 3; }
+006F:  BSF    03.5
+0070:  BSF    06.7
+0071:  BCF    03.5
+0072:  BTFSC  06.7
+0073:  GOTO   077
+0074:  MOVLW  03
+0075:  MOVWF  46
+0076:  GOTO   078
+....................       else { continue; } // Không có phím nào du?c nh?n ? c?t này
+0077:  GOTO   0AE
+.................... 
+....................       delay_ms(20); // Ch?ng d?i phím
+0078:  MOVLW  14
+0079:  MOVWF  48
+.................... 
+....................       // Ki?m tra l?i phím có còn nh?n không
+....................       if (!input(h0 + hang)) { 
+*
+008E:  MOVLW  34
+008F:  ADDWF  46,W
+0090:  MOVWF  48
+0091:  MOVWF  49
+0092:  MOVLW  01
+0093:  MOVWF  4A
+0094:  CLRF   4C
+0095:  MOVLW  80
+0096:  MOVWF  4B
+0097:  GOTO   004
+0098:  MOVF   48,W
+0099:  MOVWF  49
+009A:  CLRF   4B
+009B:  CLRF   4A
+009C:  GOTO   026
+009D:  BTFSC  78.0
+009E:  GOTO   0AE
+....................          maphim = cot * 4 + hang;
+009F:  RLF    47,W
+00A0:  MOVWF  77
+00A1:  RLF    77,F
+00A2:  MOVLW  FC
+00A3:  ANDWF  77,F
+00A4:  MOVF   77,W
+00A5:  ADDWF  46,W
+00A6:  MOVWF  45
+....................          maphim = doi_ma_phim[maphim];
+00A7:  MOVLW  24
+00A8:  ADDWF  45,W
+00A9:  MOVWF  04
+00AA:  BCF    03.7
+00AB:  MOVF   00,W
+00AC:  MOVWF  45
+....................          break;
+00AD:  GOTO   0B0
+....................       }
+00AE:  INCF   47,F
+00AF:  GOTO   044
+....................    }
+....................    return maphim;
+00B0:  MOVF   45,W
+00B1:  MOVWF  78
+00B2:  BCF    0A.3
+00B3:  BCF    0A.4
+00B4:  GOTO   114 (RETURN)
+.................... }
+.................... 
+.................... void main() {
+00B5:  MOVF   03,W
+00B6:  ANDLW  1F
+00B7:  MOVWF  03
+00B8:  MOVLW  FF
+00B9:  MOVWF  44
+00BA:  BSF    03.5
+00BB:  BSF    1F.0
+00BC:  BSF    1F.1
+00BD:  BSF    1F.2
+00BE:  BCF    1F.3
+00BF:  MOVLW  07
+00C0:  MOVWF  1C
+00C1:  BCF    03.7
+....................    set_tris_b(0xF0); // B4-B7 là d?u vào, B0-B3 là d?u ra
+*
+010A:  MOVLW  F0
+010B:  BSF    03.5
+010C:  MOVWF  06
+....................    port_b_pullups(0xF0); // B?t di?n tr? kéo lên cho B4-B7
+010D:  BCF    01.7
+....................    set_tris_d(0x00); // PORTD là d?u ra cho LED 7 do?n
+010E:  MOVLW  00
+010F:  MOVWF  08
+....................    output_d(0x00); // T?t LED 7 do?n ban d?u
+0110:  CLRF   08
+0111:  BCF    03.5
+0112:  CLRF   08
+.................... 
+....................    while (TRUE) {
+....................       mp = quet_mtp_4x4();
+0113:  GOTO   041
+0114:  MOVF   78,W
+0115:  MOVWF  44
+....................       if (mp != 0xFF) { // N?u có phím du?c nh?n
+0116:  INCFSZ 44,W
+0117:  GOTO   119
+0118:  GOTO   125
+....................          output_d(ma7doan[mp]); // Hi?n th? s? lên LED 7 do?n
+0119:  MOVLW  34
+011A:  ADDWF  44,W
+011B:  MOVWF  04
+011C:  BCF    03.7
+011D:  MOVF   00,W
+011E:  MOVWF  45
+011F:  BSF    03.5
+0120:  CLRF   08
+0121:  BCF    03.5
+0122:  MOVF   45,W
+0123:  MOVWF  08
+....................       } else {
+0124:  GOTO   129
+....................          output_d(0x00); // Không có phím nh?n thì t?t LED
+0125:  BSF    03.5
+0126:  CLRF   08
+0127:  BCF    03.5
+0128:  CLRF   08
+....................       }
+0129:  GOTO   113
+....................    }
+.................... }
+.................... 
+012A:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,0 +1,95 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020-021 lm35
+022     j
+023     ma_tr
+024     ma_ch
+025     ma_dv
+026-029 @SFTOI.P1
+026     @delay_ms1.P2
+026-027 @DIV1616.P3
+026-027 @ITOF.P4
+026-029 @DIVFF.P5
+026-027 giaima_3so_xvn.x
+028-029 @DIV1616.P1
+028     giaima_3so_xvn.@SCRATCH1
+029     giaima_3so_xvn.@SCRATCH2
+02A-02D @DIVFF.P1
+02A-02B @DIVS1616.P2
+02A     @DIV1616.@SCRATCH1
+02C-02D @DIVS1616.P1
+02E     @DIVS1616.@SCRATCH1
+02E     @DIVFF.@SCRATCH1
+02F     @DIVS1616.@SCRATCH2
+02F     @DIVFF.@SCRATCH2
+030     @DIVFF.@SCRATCH3
+031     @DIVFF.@SCRATCH4
+032     @DIVFF.@SCRATCH5
+033     @DIVFF.@SCRATCH6
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  ma7doan.call
+000008  ma7doan.data
+000012  @DIV1616
+000039  @ITOF
+000058  @DIVFF
+000124  @SFTOI
+000145  @DIVS1616
+000183  giaima_3so_xvn
+0001E3  @delay_ms1
+0001F8  hienthi_3so_quet
+00022B  MAIN
+00022B  @cinit1
+000235  @cinit2
+
+Project Directory:
+    D:\Embedded\Projects\PIC16F877A\Read LM35 and show 3 7-seq\
+
+Project Files:
+    main.c                                                  [19-Mar-25 09:18  CRC=E79AC458]
+    main.h                                                  [18-Mar-25 19:14  CRC=00000000]
+    C:\Program Files (x86)\PICC\Devices\16F877A.h           [07-Mar-23 19:19  CRC=32478F9C]
+
+Source signature=4C29E390
+Program memory checksum=0000
+Hex file CRC=2E01
+
+Units:
+    D:\Embedded\Projects\PIC16F877A\Read LM35 and show 3 7-seq\main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

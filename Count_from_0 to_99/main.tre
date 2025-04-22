@@ -1,0 +1,12 @@
+ÀÄmain
+   ÀÄMAIN  0/40  Ram=1
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÃÄgiaima_2so_xvn  0/42  Ram=4
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÃÄ@const705  0/14  Ram=0
+      ³  ÃÄ@DIVS1616  0/62  Ram=6
+      ³  ÀÄ@const705  0/14  Ram=0
+      ÀÄhienthi_2so_quet  0/35  Ram=0
+         ÃÄ@delay_ms2  0/21  Ram=1
+         ÀÄ@delay_ms2  0/21  Ram=1

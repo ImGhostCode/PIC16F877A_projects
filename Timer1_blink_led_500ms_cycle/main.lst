@@ -1,0 +1,113 @@
+CCS PCM C Compiler, Version 5.115, 43599               14-Mar-25 18:57
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\Timer1 chop tat led 500ms\main.lst
+
+               ROM used:   50 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           7 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+.................... 
+.................... #list
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #use delay(clock=6MHz)
+.................... #bit tmr1if = 0x0c.0
+.................... 
+.................... unsigned INT d;
+.................... 
+.................... void main()
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  BSF    03.5
+0008:  BSF    1F.0
+0009:  BSF    1F.1
+000A:  BSF    1F.2
+000B:  BCF    1F.3
+000C:  MOVLW  07
+000D:  MOVWF  1C
+000E:  BCF    03.7
+.................... {
+....................    set_tris_d (0x00) ;
+000F:  MOVLW  00
+0010:  MOVWF  08
+....................    d = 0x00;
+0011:  BCF    03.5
+0012:  CLRF   20
+....................    output_d (d) ;
+0013:  BSF    03.5
+0014:  CLRF   08
+0015:  BCF    03.5
+0016:  MOVF   20,W
+0017:  MOVWF  08
+....................    setup_timer_1 (T1_INTERNAL|T1_DIV_BY_8) ;
+0018:  MOVLW  B5
+0019:  MOVWF  10
+....................    set_timer1 (18658) ;
+001A:  CLRF   0E
+001B:  MOVLW  48
+001C:  MOVWF  0F
+001D:  MOVLW  E2
+001E:  MOVWF  0E
+001F:  NOP
+....................    tmr1if= 0;
+0020:  BCF    0C.0
+.................... 
+....................    WHILE (TRUE)
+....................    {
+....................       IF (tmr1if == 1)
+0021:  BTFSS  0C.0
+0022:  GOTO   030
+....................       {
+....................          d = ~d;
+0023:  COMF   20,F
+....................          output_d (d) ;
+0024:  BSF    03.5
+0025:  CLRF   08
+0026:  BCF    03.5
+0027:  MOVF   20,W
+0028:  MOVWF  08
+....................          set_timer1 (18658) ;
+0029:  CLRF   0E
+002A:  MOVLW  48
+002B:  MOVWF  0F
+002C:  MOVLW  E2
+002D:  MOVWF  0E
+002E:  NOP
+....................          tmr1if = 0;
+002F:  BCF    0C.0
+....................       }
+0030:  GOTO   021
+....................    }
+.................... }
+.................... // 16bit => 65,536
+0031:  SLEEP
+.................... // 6MHz => 1/4 => 1.5MHz => 1/8 => 187.5kHz => 5.33us
+.................... //   250ms / 5.33us = 93,808
+.................... // TMR1= 65,536 - 46,878 = 18,658
+.................... 
+.................... 
+.................... 
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,4 +1,0 @@
-#include <16f877A.h>
-
-void main() {
-}

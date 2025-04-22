@@ -1,0 +1,568 @@
+CCS PCM C Compiler, Version 5.115, 43599               30-Mar-25 18:37
+
+               Filename:   D:\Embedded\Projects\PIC16F877A\PWM Adjust motor speed and direction\main.lst
+
+               ROM used:   439 words (5%)
+                           Largest free fragment is 2048
+               RAM used:   10 (3%) at main() level
+                           20 (5%) worst case
+               Stack used: 3 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  01
+0001:  MOVWF  0A
+0002:  GOTO   165
+0003:  NOP
+.................... 
+.................... #include <main.h>
+.................... #include <16F877A.h>
+.................... //////////// Standard Header file for the PIC16F877A device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877A
+0004:  BCF    0A.0
+0005:  BCF    0A.1
+0006:  BCF    0A.2
+0007:  ADDWF  02,F
+0008:  RETLW  3F
+0009:  RETLW  06
+000A:  RETLW  5B
+000B:  RETLW  4F
+000C:  RETLW  66
+000D:  RETLW  6D
+000E:  RETLW  7D
+000F:  RETLW  07
+0010:  RETLW  7F
+0011:  RETLW  6F
+0012:  MOVF   2A,W
+0013:  XORWF  2C,W
+0014:  ANDLW  80
+0015:  MOVWF  2E
+0016:  BTFSS  2A.7
+0017:  GOTO   01D
+0018:  COMF   29,F
+0019:  COMF   2A,F
+001A:  INCF   29,F
+001B:  BTFSC  03.2
+001C:  INCF   2A,F
+001D:  BTFSS  2C.7
+001E:  GOTO   024
+001F:  COMF   2B,F
+0020:  COMF   2C,F
+0021:  INCF   2B,F
+0022:  BTFSC  03.2
+0023:  INCF   2C,F
+0024:  CLRF   78
+0025:  CLRF   79
+0026:  CLRF   77
+0027:  CLRF   7A
+0028:  MOVF   2C,W
+0029:  BTFSS  03.2
+002A:  GOTO   02E
+002B:  MOVF   2B,W
+002C:  BTFSC  03.2
+002D:  GOTO   048
+002E:  MOVLW  10
+002F:  MOVWF  2D
+0030:  BCF    03.0
+0031:  RLF    29,F
+0032:  RLF    2A,F
+0033:  RLF    77,F
+0034:  RLF    7A,F
+0035:  MOVF   2C,W
+0036:  SUBWF  7A,W
+0037:  BTFSS  03.2
+0038:  GOTO   03B
+0039:  MOVF   2B,W
+003A:  SUBWF  77,W
+003B:  BTFSS  03.0
+003C:  GOTO   044
+003D:  MOVF   2B,W
+003E:  SUBWF  77,F
+003F:  BTFSS  03.0
+0040:  DECF   7A,F
+0041:  MOVF   2C,W
+0042:  SUBWF  7A,F
+0043:  BSF    03.0
+0044:  RLF    78,F
+0045:  RLF    79,F
+0046:  DECFSZ 2D,F
+0047:  GOTO   030
+0048:  BTFSS  2E.7
+0049:  GOTO   04F
+004A:  COMF   78,F
+004B:  COMF   79,F
+004C:  INCF   78,F
+004D:  BTFSC  03.2
+004E:  INCF   79,F
+004F:  RETURN
+*
+0088:  MOVF   26,W
+0089:  XORWF  28,W
+008A:  ANDLW  80
+008B:  MOVWF  2A
+008C:  BTFSS  26.7
+008D:  GOTO   093
+008E:  COMF   25,F
+008F:  COMF   26,F
+0090:  INCF   25,F
+0091:  BTFSC  03.2
+0092:  INCF   26,F
+0093:  BTFSS  28.7
+0094:  GOTO   09A
+0095:  COMF   27,F
+0096:  COMF   28,F
+0097:  INCF   27,F
+0098:  BTFSC  03.2
+0099:  INCF   28,F
+009A:  MOVLW  10
+009B:  MOVWF  29
+009C:  CLRF   77
+009D:  CLRF   7A
+009E:  RRF    26,F
+009F:  RRF    25,F
+00A0:  BTFSS  03.0
+00A1:  GOTO   0A8
+00A2:  MOVF   27,W
+00A3:  ADDWF  77,F
+00A4:  BTFSC  03.0
+00A5:  INCF   7A,F
+00A6:  MOVF   28,W
+00A7:  ADDWF  7A,F
+00A8:  RRF    7A,F
+00A9:  RRF    77,F
+00AA:  RRF    79,F
+00AB:  RRF    78,F
+00AC:  DECFSZ 29,F
+00AD:  GOTO   09E
+00AE:  BTFSS  2A.7
+00AF:  GOTO   0B5
+00B0:  COMF   78,F
+00B1:  COMF   79,F
+00B2:  INCF   78,F
+00B3:  BTFSC  03.2
+00B4:  INCF   79,F
+00B5:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #device ADC=10
+.................... #use delay(crystal=20Mhz)
+00B6:  MOVLW  26
+00B7:  MOVWF  04
+00B8:  BCF    03.7
+00B9:  MOVF   00,W
+00BA:  BTFSC  03.2
+00BB:  GOTO   0C9
+00BC:  MOVLW  06
+00BD:  MOVWF  78
+00BE:  CLRF   77
+00BF:  DECFSZ 77,F
+00C0:  GOTO   0BF
+00C1:  DECFSZ 78,F
+00C2:  GOTO   0BE
+00C3:  MOVLW  7B
+00C4:  MOVWF  77
+00C5:  DECFSZ 77,F
+00C6:  GOTO   0C5
+00C7:  DECFSZ 00,F
+00C8:  GOTO   0BC
+00C9:  RETURN
+.................... 
+.................... #fuses hs, nowdt, put, noprotect, nolvp
+.................... #define forw PIN_B0
+.................... #define rev PIN_B1
+.................... 
+.................... unsigned int ma_ch, ma_dv;
+.................... signed int16 capdo=0;
+.................... const unsigned char ma7doan[10] = {0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f};
+.................... 
+.................... void giaima_capdo_2so_xvn(signed int16 x) 
+.................... {
+....................    ma_dv = ma7doan[x % 10];
+*
+0050:  MOVF   26,W
+0051:  MOVWF  2A
+0052:  MOVF   25,W
+0053:  MOVWF  29
+0054:  CLRF   2C
+0055:  MOVLW  0A
+0056:  MOVWF  2B
+0057:  CALL   012
+0058:  MOVF   77,W
+0059:  MOVWF  27
+005A:  MOVF   7A,W
+005B:  MOVWF  28
+005C:  MOVWF  7A
+005D:  MOVF   77,W
+005E:  CALL   004
+005F:  MOVWF  78
+0060:  MOVWF  21
+....................    ma_ch = ma7doan[x / 10 % 10];
+0061:  MOVF   26,W
+0062:  MOVWF  2A
+0063:  MOVF   25,W
+0064:  MOVWF  29
+0065:  CLRF   2C
+0066:  MOVLW  0A
+0067:  MOVWF  2B
+0068:  CALL   012
+0069:  MOVF   79,W
+006A:  MOVWF  28
+006B:  MOVF   78,W
+006C:  MOVWF  27
+006D:  MOVF   79,W
+006E:  MOVWF  2A
+006F:  MOVF   78,W
+0070:  MOVWF  29
+0071:  CLRF   2C
+0072:  MOVLW  0A
+0073:  MOVWF  2B
+0074:  CALL   012
+0075:  MOVF   77,W
+0076:  MOVWF  27
+0077:  MOVF   7A,W
+0078:  MOVWF  28
+0079:  MOVWF  7A
+007A:  MOVF   77,W
+007B:  CALL   004
+007C:  MOVWF  78
+007D:  MOVWF  20
+....................    if (x < 10) ma_ch = 0x00;
+007E:  BTFSC  26.7
+007F:  GOTO   086
+0080:  MOVF   26,F
+0081:  BTFSS  03.2
+0082:  GOTO   087
+0083:  MOVF   25,W
+0084:  SUBLW  09
+0085:  BTFSC  03.0
+0086:  CLRF   20
+0087:  RETURN
+.................... }
+.................... 
+.................... void hienthi_capdo() 
+.................... {
+....................    output_d (ma_dv) ;
+*
+00CA:  BSF    03.5
+00CB:  CLRF   08
+00CC:  BCF    03.5
+00CD:  MOVF   21,W
+00CE:  MOVWF  08
+....................    output_high (PIN_B2) ;
+00CF:  BSF    03.5
+00D0:  BCF    06.2
+00D1:  BCF    03.5
+00D2:  BSF    06.2
+....................    delay_ms (1) ;
+00D3:  MOVLW  01
+00D4:  MOVWF  26
+00D5:  CALL   0B6
+....................    output_low (PIN_B2) ;
+00D6:  BSF    03.5
+00D7:  BCF    06.2
+00D8:  BCF    03.5
+00D9:  BCF    06.2
+....................    
+....................    output_d (ma_ch) ;
+00DA:  BSF    03.5
+00DB:  CLRF   08
+00DC:  BCF    03.5
+00DD:  MOVF   20,W
+00DE:  MOVWF  08
+....................    output_high (PIN_B3) ;
+00DF:  BSF    03.5
+00E0:  BCF    06.3
+00E1:  BCF    03.5
+00E2:  BSF    06.3
+....................    delay_ms (1) ;
+00E3:  MOVLW  01
+00E4:  MOVWF  26
+00E5:  CALL   0B6
+....................    output_low (PIN_B3) ;
+00E6:  BSF    03.5
+00E7:  BCF    06.3
+00E8:  BCF    03.5
+00E9:  BCF    06.3
+00EA:  RETURN
+.................... }
+.................... void delay_hienthi() 
+.................... {
+....................    unsigned int j;
+....................    for (j = 0; j < 50; j++) hienthi_capdo ();
+00EB:  CLRF   25
+00EC:  MOVF   25,W
+00ED:  SUBLW  31
+00EE:  BTFSS  03.0
+00EF:  GOTO   0F3
+00F0:  CALL   0CA
+00F1:  INCF   25,F
+00F2:  GOTO   0EC
+00F3:  RETURN
+.................... }
+.................... 
+.................... void phim_forw() 
+.................... {
+....................    if (capdo < 20)
+00F4:  BTFSC  23.7
+00F5:  GOTO   0FD
+00F6:  MOVF   23,F
+00F7:  BTFSS  03.2
+00F8:  GOTO   122
+00F9:  MOVF   22,W
+00FA:  SUBLW  13
+00FB:  BTFSS  03.0
+00FC:  GOTO   122
+....................    {
+....................       capdo++;
+00FD:  INCF   22,F
+00FE:  BTFSC  03.2
+00FF:  INCF   23,F
+....................       set_pwm1_duty (capdo * 50) ;
+0100:  MOVF   23,W
+0101:  MOVWF  26
+0102:  MOVF   22,W
+0103:  MOVWF  25
+0104:  CLRF   28
+0105:  MOVLW  32
+0106:  MOVWF  27
+0107:  CALL   088
+0108:  MOVF   79,W
+0109:  MOVWF  26
+010A:  MOVF   78,W
+010B:  MOVWF  25
+010C:  RRF    26,F
+010D:  RRF    25,F
+010E:  RRF    26,F
+010F:  RRF    25,F
+0110:  RRF    26,F
+0111:  MOVF   25,W
+0112:  MOVWF  15
+0113:  RRF    26,F
+0114:  RRF    26,W
+0115:  ANDLW  30
+0116:  MOVWF  77
+0117:  MOVF   17,W
+0118:  ANDLW  CF
+0119:  IORWF  77,W
+011A:  MOVWF  17
+....................       giaima_capdo_2so_xvn (capdo);
+011B:  MOVF   23,W
+011C:  MOVWF  26
+011D:  MOVF   22,W
+011E:  MOVWF  25
+011F:  CALL   050
+....................       delay_hienthi ();
+0120:  CALL   0EB
+....................       } else {
+0121:  GOTO   123
+....................       hienthi_capdo ();
+0122:  CALL   0CA
+....................    }
+0123:  BCF    0A.3
+0124:  BCF    0A.4
+0125:  GOTO   1B5 (RETURN)
+.................... }
+.................... 
+.................... void phim_rev() 
+.................... {
+....................    if (capdo < 20)
+0126:  BTFSC  23.7
+0127:  GOTO   12F
+0128:  MOVF   23,F
+0129:  BTFSS  03.2
+012A:  GOTO   154
+012B:  MOVF   22,W
+012C:  SUBLW  13
+012D:  BTFSS  03.0
+012E:  GOTO   154
+....................    {
+....................       capdo++;
+012F:  INCF   22,F
+0130:  BTFSC  03.2
+0131:  INCF   23,F
+....................       set_pwm2_duty (capdo * 50) ;
+0132:  MOVF   23,W
+0133:  MOVWF  26
+0134:  MOVF   22,W
+0135:  MOVWF  25
+0136:  CLRF   28
+0137:  MOVLW  32
+0138:  MOVWF  27
+0139:  CALL   088
+013A:  MOVF   79,W
+013B:  MOVWF  26
+013C:  MOVF   78,W
+013D:  MOVWF  25
+013E:  RRF    26,F
+013F:  RRF    25,F
+0140:  RRF    26,F
+0141:  RRF    25,F
+0142:  RRF    26,F
+0143:  MOVF   25,W
+0144:  MOVWF  1B
+0145:  RRF    26,F
+0146:  RRF    26,W
+0147:  ANDLW  30
+0148:  MOVWF  77
+0149:  MOVF   1D,W
+014A:  ANDLW  CF
+014B:  IORWF  77,W
+014C:  MOVWF  1D
+....................       giaima_capdo_2so_xvn (capdo);
+014D:  MOVF   23,W
+014E:  MOVWF  26
+014F:  MOVF   22,W
+0150:  MOVWF  25
+0151:  CALL   050
+....................       delay_hienthi ();
+0152:  CALL   0EB
+....................       } else {
+0153:  GOTO   155
+....................       hienthi_capdo ();
+0154:  CALL   0CA
+....................    }
+0155:  BCF    0A.3
+0156:  BCF    0A.4
+0157:  GOTO   1B5 (RETURN)
+.................... }
+.................... 
+.................... void dongco_stop() 
+.................... {
+....................    capdo = 0;
+0158:  CLRF   23
+0159:  CLRF   22
+....................    set_pwm1_duty (0);
+015A:  CLRF   15
+....................    set_pwm2_duty (0);
+015B:  CLRF   1B
+....................    giaima_capdo_2so_xvn (capdo);
+015C:  MOVF   23,W
+015D:  MOVWF  26
+015E:  MOVF   22,W
+015F:  MOVWF  25
+0160:  CALL   050
+....................    hienthi_capdo ();
+0161:  CALL   0CA
+0162:  BCF    0A.3
+0163:  BCF    0A.4
+0164:  GOTO   1B5 (RETURN)
+.................... }
+.................... 
+.................... void main()
+0165:  MOVF   03,W
+0166:  ANDLW  1F
+0167:  MOVWF  03
+0168:  CLRF   23
+0169:  CLRF   22
+016A:  MOVLW  FF
+016B:  MOVWF  24
+016C:  BSF    03.5
+016D:  BSF    1F.0
+016E:  BSF    1F.1
+016F:  BSF    1F.2
+0170:  BCF    1F.3
+0171:  MOVLW  07
+0172:  MOVWF  1C
+0173:  BCF    03.7
+.................... {
+....................    set_tris_b (0x03);
+0174:  MOVLW  03
+0175:  MOVWF  06
+....................    set_tris_d (0x00);
+0176:  MOVLW  00
+0177:  MOVWF  08
+....................    set_tris_c (0x00);
+0178:  MOVWF  07
+0179:  BCF    03.5
+017A:  MOVWF  24
+....................    output_d (0x00);
+017B:  BSF    03.5
+017C:  CLRF   08
+017D:  BCF    03.5
+017E:  CLRF   08
+....................    output_high (PIN_C0);
+017F:  BCF    24.0
+0180:  MOVF   24,W
+0181:  BSF    03.5
+0182:  MOVWF  07
+0183:  BCF    03.5
+0184:  BSF    07.0
+....................    setup_ccp1 (CCP_PWM);
+0185:  BCF    24.2
+0186:  MOVF   24,W
+0187:  BSF    03.5
+0188:  MOVWF  07
+0189:  BCF    03.5
+018A:  BCF    07.2
+018B:  MOVLW  0C
+018C:  MOVWF  17
+....................    setup_ccp2 (CCP_PWM);
+018D:  BCF    24.1
+018E:  MOVF   24,W
+018F:  BSF    03.5
+0190:  MOVWF  07
+0191:  BCF    03.5
+0192:  BCF    07.1
+0193:  MOVLW  0C
+0194:  MOVWF  1D
+....................    setup_timer_2 (T2_DIV_BY_16, 249, 1);
+0195:  MOVLW  00
+0196:  MOVWF  78
+0197:  IORLW  06
+0198:  MOVWF  12
+0199:  MOVLW  F9
+019A:  BSF    03.5
+019B:  MOVWF  12
+....................    capdo = 0;
+019C:  BCF    03.5
+019D:  CLRF   23
+019E:  CLRF   22
+....................    set_pwm1_duty (0);
+019F:  CLRF   15
+....................    set_pwm2_duty (0) ;
+01A0:  CLRF   1B
+....................    giaima_capdo_2so_xvn (capdo);
+01A1:  MOVF   23,W
+01A2:  MOVWF  26
+01A3:  MOVF   22,W
+01A4:  MOVWF  25
+01A5:  CALL   050
+.................... 
+....................    while (TRUE)
+....................    {
+....................       if (!input (forw)) phim_forw ();
+01A6:  BSF    03.5
+01A7:  BSF    06.0
+01A8:  BCF    03.5
+01A9:  BTFSC  06.0
+01AA:  GOTO   1AD
+01AB:  GOTO   0F4
+01AC:  GOTO   1B5
+....................       else if (!input (rev)) phim_rev ();
+01AD:  BSF    03.5
+01AE:  BSF    06.1
+01AF:  BCF    03.5
+01B0:  BTFSC  06.1
+01B1:  GOTO   1B4
+01B2:  GOTO   126
+01B3:  GOTO   1B5
+....................       else dongco_stop () ;
+01B4:  GOTO   158
+01B5:  GOTO   1A6
+....................    }
+.................... }
+.................... 
+01B6:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

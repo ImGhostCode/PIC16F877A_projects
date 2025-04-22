@@ -1,0 +1,8 @@
+ÀÄmain
+   ÀÄMAIN  0/118  Ram=1
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄ@cinit2  (Inline)  Ram=0
+      ÀÄquet_mtp_4x4  0/116  Ram=4
+         ÃÄ@delay_ms2  (Inline)  Ram=1
+         ÃÄ@WRITEBITA  0/34  Ram=6
+         ÀÄ@READBITA  0/27  Ram=5
